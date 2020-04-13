@@ -25,6 +25,7 @@ function submit(){
         xhr.onload = function(){
             const serverResponse = document.getElementById("serverResponse");
             if(this.responseText=="authorized"){
+                document.getElementById("serverResponse").style.color = "white";
                 location.href="homepage.php";
             }
             serverResponse.innerHTML = this.responseText;
