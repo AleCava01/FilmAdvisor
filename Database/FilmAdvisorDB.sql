@@ -66,3 +66,8 @@ create table filmgenere(
     foreign key(id_f) references film(id_f)
 )engine innodb;
 
+
+/*---------------------------------------------------------*/
+
+insert into film(titolo, descrizione, copertina, durata, regista) values ("Inception", "Dom Cobb (Leonardo di Caprio) è il migliore nell'estrarre informazioni dal subconscio delle persone durante lo stato onirico, quando la mente è maggiormente vulnerabile.", "Images/copertine/inception.jpg", 142, "Christopher Nolan");
+insert into film(titolo, descrizione, copertina, durata, regista) values ("Il Grande Lebowski", "Drugo è un disoccupato giocatore di bowling rimasto legato agli anni Settanta, che si trova coinvolto in un doppio complotto per un puro caso di omonimia.", "Images/copertine/ilGrandeLebowski.jpg", 119, "Ethan Coen");
