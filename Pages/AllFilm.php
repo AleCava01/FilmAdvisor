@@ -11,16 +11,15 @@
         include "DBsettings.php";
         include "navbar2.php";
         ?>
-        <div class="container">
+        <div class="container-fluid">
             <?php
             $movies = $conn -> query("SELECT * FROM film");
             $film = mysqli_fetch_assoc($movies);
             while($film){
-                echo("<div class='copertina_div'><a href='"."film.php?id=x"."'><img class='copertina_img' src='".$film["copertina"]."'></a></div>");
+                echo("<div class='copertina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='copertina_img' src='".$film["copertina"]."'></a></div>");
                 $film = mysqli_fetch_assoc($movies);
             }
             ?>
-            </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>

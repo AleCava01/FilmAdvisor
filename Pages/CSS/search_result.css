@@ -1,0 +1,8 @@
+.copertina_img{
+    height:184px;
+    width: 129px;
+}
+.copertina_div{
+    padding: 10px;
+    display: inline-flex;
+}
