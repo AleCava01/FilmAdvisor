@@ -6,7 +6,7 @@
 
     </head>
     <body>
-        <div>
+        <div style="height:100%">
         <?php
         include "DBsettings.php";
         include "navbar2.php";
@@ -19,16 +19,16 @@
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner mh-100">
             <div class="carousel-item active">
-            <img src="https://source.unsplash.com/collection/190727/1600x900" class="d-block w-100" alt="...">
+            <img src="Images/copertine/inception_cover.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </div>
             </div>
             <div class="carousel-item">
-            <img src="https://source.unsplash.com/collection/190757/1600x900" class="d-block w-100" alt="...">
+            <img src="Images/copertine/thebiglebowski_cover.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

@@ -1,8 +1,8 @@
-.copertina_img{
+.locandina_img{
     height:184px;
     width: 129px;
 }
-.copertina_div{
+.locandina_div{
     padding: 10px;
     display: inline-flex;
 }

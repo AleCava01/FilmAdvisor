@@ -124,6 +124,7 @@ class VideoStream
         $this->end();
     }
 }
+include "DBsettings.php";
 
 $filmpath = "Movies/".$_GET["id_f"].".mp4";
 $stream = new VideoStream($filmpath);
