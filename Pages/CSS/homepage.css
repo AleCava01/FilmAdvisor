@@ -4,3 +4,12 @@
     background-size: cover;
     background-position: center center;
 }
+
+.carousel-item{
+    height: 100%;
+}
+
+.carousel-item .active{
+    height: 100%;
+
+}

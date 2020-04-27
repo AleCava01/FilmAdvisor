@@ -10,15 +10,23 @@
         <?php
         include "DBsettings.php";
         include "navbar2.php";
+
+        //get suggested Film IDs for the user via py script (?)
+        $IDs = array(1,2,3);
+        $covers = array();
+        $titles = array();
+        $descriptions = array();
+        for($i=0; $i<count($IDs); $i++){
+            $covers_result = $conn -> query("SELECT * FROM film WHERE id_f =".$IDs[$i]);
+            $cover_result = mysqli_fetch_assoc($covers_result);
+            $covers[] = $cover_result["copertina"];
+            $titles[] = $cover_result["titolo"];
+            $descriptions[] = $cover_result["descrizione"];
+        }
         ?>
         
 
-        <div id="carouselExampleCaptions" style=" position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    margin-top:58px" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleCaptions" style=" position:fixed;top:0;bottom:0;left:0;right:0;margin-top:58px" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -26,26 +34,26 @@
         </ol>
         <div class="carousel-inner mh-100">
             <div class="carousel-item active">
-            <img src="Images/copertine/inception_cover.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            
+        <?php
+        echo("<img src='".$covers[0]."' class='d-block w-100' alt='...''>");
+        ?>
+                <div class="carousel-caption d-none d-md-block">
+        <?php
+        echo("<h5>".$titles[0]."</h5>");
+        echo("<p>".$descriptions[0]."</p>");
+        ?> 
             </div>
             </div>
-            <div class="carousel-item">
-            <img src="Images/copertine/thebiglebowski_cover.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            </div>
-            <div class="carousel-item">
-            <img src="https://source.unsplash.com/collection/190725/1600x900" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
-            </div>
+            <?php
+            for($i=1; $i<count($IDs); $i++){
+                echo("<div class='carousel-item'>");
+                echo("<img src=".$covers[$i]." class='d-block w-100' alt='...'>");
+                echo("<div class='carousel-caption d-none d-md-block'>");
+                echo("<h5>".$titles[$i]."</h5>");
+                echo("<p>".$descriptions[$i]."</p></div></div>");
+            }
+            ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
