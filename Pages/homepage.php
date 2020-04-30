@@ -27,7 +27,7 @@
         ?>
         
 
-        <div id="carouselExampleCaptions" style=" position:fixed;top:0;bottom:0;left:0;right:0;margin-top:56px" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleCaptions" style="height:91% " class="carousel slide" data-ride="carousel">
         
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>

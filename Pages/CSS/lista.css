@@ -9,13 +9,7 @@
     display: inline-flex;
 }
 .container-fluid{
-    height:100%;
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    margin-top:56px;
+    height:92%;
     background-color: rgb(36, 36, 36);
 
 }
@@ -24,4 +18,7 @@
     -webkit-box-shadow: 0 0 5px #ccc;
     box-shadow: 0 0 5px #ccc;
     transition:0.3s;
+}
+body{
+    overflow: hidden;
 }

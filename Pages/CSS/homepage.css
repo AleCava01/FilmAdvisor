@@ -20,3 +20,6 @@ h5,p{
     color:white;
 
 }
+body{
+    overflow: hidden;
+}
