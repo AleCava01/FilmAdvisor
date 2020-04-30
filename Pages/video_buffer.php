@@ -1,4 +1,6 @@
+<div style="width:100%; height:100%">
 <?php
+
 /**
  * Description of VideoStream
  *
@@ -125,7 +127,19 @@ class VideoStream
     }
 }
 include "DBsettings.php";
+include "logcontrol.php";
 
-$filmpath = "Movies/".$_GET["id_f"].".mp4";
+$id_f = $_GET["id_f"];
+$id_u = $_SESSION["id_u"];
+
+if((mysqli_fetch_assoc($conn->query("SELECT EXISTS(SELECT * FROM lista WHERE id_u=".$id_u." AND id_f=".$id_f.") as x;")))["x"]==0){
+    mysqli_query($conn, "INSERT INTO lista(id_u, id_f) VALUES (".$id_u.",".$id_f.");");
+}
+
+
+$filmpath = mysqli_fetch_assoc($conn->query("SELECT URI from film where id_f = ".$id_f.";"))["URI"];
 $stream = new VideoStream($filmpath);
+session_write_close();
 $stream->start();
+?>
+</div>

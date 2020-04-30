@@ -13,3 +13,10 @@
     height: 100%;
 
 }
+.carousel-caption{
+    background-color: rgba(8, 8, 8, 0.726);
+}
+h5,p{
+    color:white;
+
+}

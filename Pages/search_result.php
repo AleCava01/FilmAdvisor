@@ -11,6 +11,8 @@
     <?php
     include "DBsettings.php";
     include "navbar2.php";
+    include "logcontrol.php";
+
     $search_title = $_POST["title"];
     ?>
     <div class="container-fluid">
@@ -19,7 +21,7 @@
         $movies = $conn -> query("SELECT * FROM film WHERE titolo LIKE '%".$search_title."%'");
         $film = mysqli_fetch_assoc($movies);
         while($film){
-            echo("<div class='copertina_div'><a href='"."film.php?id=x"."'><img class='copertina_img' src='".$film["copertina"]."'></a></div>");
+            echo("<div class='locandina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div>");
             $film = mysqli_fetch_assoc($movies);
         }
         ?>

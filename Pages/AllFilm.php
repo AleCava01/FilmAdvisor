@@ -10,6 +10,7 @@
         <?php
         include "DBsettings.php";
         include "navbar2.php";
+        include "logcontrol.php";
         ?>
         <div class="container-fluid">
             <?php
