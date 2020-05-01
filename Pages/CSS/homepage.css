@@ -5,6 +5,7 @@
     background-position: center center;
 }
 
+
 .carousel-item{
     height: 100%;
 }
@@ -20,6 +21,14 @@ h5,p{
     color:white;
 
 }
-body{
-    overflow: hidden;
+.container-fluid{
+    width: 100%;
+    background-color: rgb(8, 8, 8);
+
+}
+::-webkit-scrollbar {
+    display: none;
+}
+img{
+    object-fit: cover;
 }

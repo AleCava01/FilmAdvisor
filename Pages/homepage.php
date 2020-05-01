@@ -3,14 +3,17 @@
         <link rel="stylesheet" type="text/css" href="CSS/homepage.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/allfilm.css">
+
 
     </head>
-    <body>
-        <div>
-        <?php
+    <body data-spy="scroll" data-target=".navbar" data-offset="70">
+    <div id="suggested" class="container-fluid"></div>
+
+    <?php
         include "DBsettings.php";
-        include "navbar2.php";
         include "logcontrol.php";
+        include "navbar_homepage.php";
 
         //get suggested Film IDs for the user via py script (?)
         $IDs = array(1,2,3);
@@ -25,9 +28,9 @@
             $descriptions[] = $cover_result["descrizione"];
         }
         ?>
-        
+        <div id="null" class="container-fluid" style="margin:0; width:100%;height: calc(100% - 55px);">
 
-        <div id="carouselExampleCaptions" style="height:91% " class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -40,7 +43,7 @@
                 <div class="carousel-item active">
                         <?php
                         echo("<a href='video_buffer.php?id_f=".$IDs[0]."'>");
-                        echo("<img src='".$covers[0]."' class='d-block w-100' alt='...''>");
+                        echo("<img src='".$covers[0]."' class='d-block w-100' alt='...'>");
                         ?>
 
                         <div class="carousel-caption d-none d-md-block w-100" style="left:0; bottom:0">
@@ -51,7 +54,7 @@
                         </div>
                         </a>
                     </div>
-               
+            
                 <?php
                 for($i=1; $i<count($IDs); $i++){
                     echo("<div class='carousel-item'>");
@@ -73,8 +76,25 @@
             </a>
             </div>
         </div>
-
+        </div>
+        <div id="allMovies" class="container-fluid" style="height: calc(100% - 55px);">
+                <br>
+                <h5 style="text-align:center;">Tutti i film</h5>
+                <?php
+                $movies = $conn -> query("SELECT * FROM film");
+                $film = mysqli_fetch_assoc($movies);
+                while($film){
+                    echo("<div class='locandina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div>");
+                    $film = mysqli_fetch_assoc($movies);
+                }
+                ?>
+        </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
+    <script>
+        var scroll = new SmoothScroll('a[href*="#"]');
+    </script>
+
     </body>
 </html>

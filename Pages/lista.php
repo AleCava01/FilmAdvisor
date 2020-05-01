@@ -11,12 +11,14 @@
     <body>
         <?php
         include "DBsettings.php";
-        include "navbar2.php";
+        include "navbar_list.php";
         include "logcontrol.php";
 
         $id_u = $_SESSION["id_u"];
         ?>
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin:0">
+            <br>
+            <h5 class="h5-title">La mia lista</h5>
             <?php
             $movies = $conn -> query("SELECT * FROM film AS f, lista AS l WHERE f.id_f=l.id_f AND id_u=".$id_u.";");
             $film = mysqli_fetch_assoc($movies);

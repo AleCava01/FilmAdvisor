@@ -8,18 +8,10 @@
     padding: 10px;
     display: inline-flex;
 }
-.container-fluid{
-    height:92%;
-    
-    background-color: rgb(36, 36, 36);
 
-}
 .locandina_img:hover{
     -moz-box-shadow: 0 0 5px #ccc;
     -webkit-box-shadow: 0 0 5px #ccc;
     box-shadow: 0 0 5px #ccc;
     transition:0.3s;
-}
-body{
-    overflow: hidden;
 }
