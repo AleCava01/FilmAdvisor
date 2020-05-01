@@ -10,12 +10,12 @@
 <body>
     <?php
     include "DBsettings.php";
-    include "navbar2.php";
+    include "navbar_search.php";
     include "logcontrol.php";
 
     $search_title = $_POST["title"];
     ?>
-    <div class="container-fluid">
+    <div class="container-fluid" >
 
         <?php
         $movies = $conn -> query("SELECT * FROM film WHERE titolo LIKE '%".$search_title."%'");

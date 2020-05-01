@@ -22,7 +22,7 @@
                 Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profilo</a>
+                    <a class="dropdown-item" href="profile.php">Profilo</a>
                     <a class="dropdown-item" href="#">Abbonamento</a>
                     <div class="dropdown-divider">
                     </div>

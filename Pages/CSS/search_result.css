@@ -9,8 +9,8 @@
     display: inline-flex;
 }
 .container-fluid{
-    height:92%;
-    background-color: rgb(36, 36, 36);
+    height:100%;
+    background-color: rgb(8, 8, 8);
 
 }
 .locandina_img:hover{
@@ -21,4 +21,8 @@
 }
 body{
     overflow: hidden;
+}
+.h5-title{
+    color:white;
+    text-align:center;
 }

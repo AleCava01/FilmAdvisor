@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="CSS/navbar2.css">
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top" >
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <a class="nav-link navbar-brand active" href="homepage.php">Film Advisor</a>    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
              <li class="nav-item">
-                <a class="nav-link active" href="#suggested">Consigliati per te</a>
+                <a class="nav-link" href="homepage.php">Consigliati per te</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#allMovies">Tutti i film</a>
+                <a class="nav-link" href="homepage.php#allMovies">Tutti i film</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="lista.php">La mia lista</a>
