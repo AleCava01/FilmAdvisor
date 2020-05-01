@@ -16,7 +16,7 @@
         include "navbar_homepage.php";
 
         //get suggested Film IDs for the user via py script (?)
-        $IDs = array(1,2,3);
+        $IDs = array(8,9,7);
         $covers = array();
         $titles = array();
         $descriptions = array();
