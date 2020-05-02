@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="CSS/profile.css">
 
 </head>
-<body>
+<body>    
     <?php
         include "DBsettings.php";
         include "navbar_profile.php";
@@ -14,21 +14,43 @@
         $id_u = $_SESSION["id_u"];
     ?>
         <br>
-        <?php
-        $dati_utente = mysqli_fetch_assoc($conn -> query("SELECT * FROM utente WHERE id_u=".$id_u.";"));
-        echo("<div class='title'><h5>Ciao ".$dati_utente["nome"].",<br> controlla o modifica i dati del tuo account</h5></div><brh6");
-        echo("<div class='semi-title'><h5>Profilo</h5></div><brh6");
-
-        echo("<div class='data'><h6>Username: ".$dati_utente["username"]."</h6>");
-        echo("<h6>Email: ".$dati_utente["email"]."</h6>");
-        echo("<h6>Indirizzo: ".$dati_utente["citta"]."(".$dati_utente["provincia"]."), via ".$dati_utente["via"]." ".$dati_utente["civico"]."</h6>");
-        echo("<h6>Data Nascita: ".$dati_utente["datanascita"]."</h6>");
-
-        echo("<div class='semi-title'><h5>Abbonamento</h5></div><brh6");
-
-        echo("</div>");
-        ?>
-
+        <div class="container-fluid container-modified">
+            <?php
+            $dati_utente = mysqli_fetch_assoc($conn -> query("SELECT * FROM utente WHERE id_u=".$id_u.";"));
+            echo("<div class='title'><h5>Ciao ".$dati_utente["nome"].",<br> controlla o modifica i dati del tuo account</h5></div>");
+            echo("<br>");
+            echo("<div class='semi-title'><h6 class='semi-title-h6'>Profilo</h6></div>");
+            echo("<hr>");
+            echo("<table class='user-data-table'>");
+            echo("<tr><td class='title-td'>Username:</td><td class='data-td'>".$dati_utente["username"]."</td></tr>");
+            echo("<tr><td class='title-td'>Email:</td><td class='data-td'>".$dati_utente["email"]."</td><td class='link-td'><a data-toggle='modal' data-target='#exampleModal' href='#'>Modifica email</a></td></tr>");
+            echo("<tr><td class='title-td'>Password:</td><td class='data-td'>**********</td><td class='link-td'><a href='modifica.php'>Modifica password</a></td></tr>");
+            echo("<tr><td class='title-td'>Indirizzo:</td><td class='data-td'>via ".$dati_utente["via"]." ".$dati_utente["civico"].", ".$dati_utente["citta"]."(".$dati_utente["provincia"].") [".$dati_utente["cap"]."]</td><td class='link-td'><a href='modifica.php'>Modifica indirizzo</a></td></tr>");
+            echo("</table>");
+            echo("<br>");
+            echo("<div class='semi-title'><h6 class='semi-title-h6'>Abbonamento</h6></div>");
+            echo("<hr>");
+            echo("</div>");
+            ?>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modifica email</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Abbiamo inviato una email contente le istruzioni per completare l'operazione al tuo indirizzo <?php echo($dati_utente['email']);?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+                </div>
+                </div>
+            </div>
+            </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
