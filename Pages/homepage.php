@@ -16,7 +16,7 @@
         include "navbar_homepage.php";
 
         //get suggested Film IDs for the user via py script (?)
-        $IDs = array(8,9,7);
+        $IDs = array(1,2,5);
         $covers = array();
         $titles = array();
         $descriptions = array();
@@ -46,7 +46,7 @@
                         echo("<img src='".$covers[0]."' class='d-block w-100 img-custom' alt='...'>");
                         ?>
 
-                        <div class="carousel-caption d-none d-md-block w-100" style="left:0; bottom:0">
+                        <div class="carousel-caption w-100" style="left:0; bottom:0">
                             <?php
                             echo("<h5>".$titles[0]."</h5>");
                             echo("<p>".$descriptions[0]."</p>");
@@ -60,7 +60,7 @@
                     echo("<div class='carousel-item'>");
                     echo("<a href='video_buffer.php?id_f=".$IDs[$i]."'>");
                     echo("<img src=".$covers[$i]." class='d-block w-100 img-custom' alt='...'>");
-                    echo("<div class='carousel-caption d-none d-md-block w-100' style='left:0; bottom:0'>");
+                    echo("<div class='carousel-caption w-100' style='left:0; bottom:0'>");
                     echo("<h5>".$titles[$i]."</h5>");
                     echo("<p>".$descriptions[$i]."</p></div></a></div>");
                 }
@@ -77,7 +77,7 @@
             </div>
         </div>
         </div>
-        <div id="allMovies" class="container-fluid" style="height: calc(100% - 55px);">
+        <div id="allMovies" class="container-fluid" style="min-height: calc(100% - 55px);">
                 <br>
                 <h5 style="text-align:center;">Tutti i film</h5>
                 <?php
