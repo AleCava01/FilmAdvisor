@@ -79,7 +79,7 @@
         </div>
         <div id="allMovies" class="container-fluid" style="min-height: calc(100% - 55px);">
                 <br>
-                <h5 style="text-align:center;">Tutti i film</h5>
+                <h5 class="semi-title-h5" style="text-align:center;">Tutti i film</h5>
                 <?php
                 $movies = $conn -> query("SELECT * FROM film");
                 $film = mysqli_fetch_assoc($movies);

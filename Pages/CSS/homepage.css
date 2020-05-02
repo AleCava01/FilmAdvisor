@@ -17,10 +17,7 @@
 .carousel-caption{
     background-color: rgba(8, 8, 8, 0.726);
 }
-h5,p{
-    color:white;
 
-}
 .container-fluid{
     width: 100%;
     background-color: rgb(8, 8, 8);
@@ -38,6 +35,13 @@ img{
 }
 .carousel-caption{
     min-height: 20px;
+}
+.carousel-caption h5 p{
+    min-height: 20px;
+    color:white;
+}
+.semi-title-h5{
+    color:white;
 }
 @media only screen and (max-width: 900px) and (orientation:portrait) {
     .carousel-caption h5{

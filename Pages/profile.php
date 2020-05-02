@@ -10,7 +10,7 @@
     <?php
         include "DBsettings.php";
         include "navbar_profile.php";
-        session_start();
+        include "logcontrol.php";
         $id_u = $_SESSION["id_u"];
     ?>
         <br>

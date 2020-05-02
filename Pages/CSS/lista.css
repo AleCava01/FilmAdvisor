@@ -1,28 +1,46 @@
 .locandina_img{
-    height:184px;
-    width: 129px;
+    height:12vw;
+    width: 8.4vw;
     transition:0.3s;
 
 }
 .locandina_div{
-    padding: 10px;
+    padding: 1vw;
     display: inline-flex;
 }
-.container-fluid{
-    height:100%;
-    background-color: rgb(8, 8, 8);
 
-}
 .locandina_img:hover{
     -moz-box-shadow: 0 0 5px #ccc;
     -webkit-box-shadow: 0 0 5px #ccc;
     box-shadow: 0 0 5px #ccc;
     transition:0.3s;
 }
+.container-fluid{
+    height:100%;
+    background-color: rgb(8, 8, 8);
+
+}
+
 body{
     overflow: hidden;
 }
 .h5-title{
     color:white;
     text-align:center;
+}
+
+
+
+  
+@media screen and (max-width: 479px) {
+    .locandina_img{
+        height:20vw;
+        width: 14vw;
+        transition:0.3s;
+    
+    }
+    .locandina_div{
+        padding: 1.5vw;
+        display: inline-flex;
+    }
 }

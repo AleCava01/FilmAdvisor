@@ -1,3 +1,49 @@
+.title{
+    color:white;
+    text-align: center;
+}
+.semi-title{
+    color:white;
+}
+body{
+    background-color: rgb(8, 8, 8);
+}
+.user-data-table{
+    margin:1;
+    margin-left:2vw;
+    color:white;
+    width:100%;
+
+}
+.semi-title-h6{
+    font-size: 1.3vw;
+}
+.title-td{
+    font-weight: 600;
+    font-size: 1.1vw;
+    width: 5%;
+
+}
+.data-td{
+    font-weight: 300;
+    font-size: 1.1vw;
+    padding-left:1vw;
+    text-align:left;
+
+}
+.link-td{
+    font-weight: 300;
+    font-size: 1.1vw;
+    padding-right:4vw;
+    text-align:right;
+}
+.container-modified{
+    padding-left:50px;
+    padding-right:50px;
+}
+hr{
+    border-top: 1px solid white;
+}
 @media only screen and (max-width: 900px) and (orientation:portrait) {
     .title{
         color:white;
@@ -21,70 +67,24 @@
     }
     .title-td{
         font-weight: 600;
-        font-size: 1vh;
+        font-size: 1.6vh;
     
     }
     .data-td{
         font-weight: 300;
-        font-size: 1vh;
+        font-size: 1.5vh;
         padding-left:1vw;
         text-align:left;
     }
     .link-td{
         font-weight: 300;
-        font-size: 1vh;
+        font-size: 1.5vh;
         padding-right:4vw;
         text-align:right;
     }
     .container-modified{
-        padding-left:50px;
-        padding-right:50px;
-    }
-    hr{
-        border-top: 1px solid white;
-    }
-}
-@media only screen and (orientation:landscape){
-    .title{
-        color:white;
-        text-align: center;
-    }
-    .semi-title{
-        color:white;
-    }
-    body{
-        background-color: rgb(8, 8, 8);
-    }
-    .user-data-table{
-        margin:1;
-        margin-left:2vw;
-        color:white;
-        width:100%;
-    
-    }
-    .semi-title-h6{
-        font-size: 1.2vw;
-    }
-    .title-td{
-        font-weight: 600;
-        font-size: 1vw;
-    
-    }
-    .data-td{
-        font-weight: 300;
-        font-size: 1vw;
-        padding-left:1vw;
-        text-align:left;
-    }
-    .link-td{
-        font-weight: 300;
-        font-size: 1vw;
-        padding-right:4vw;
-        text-align:right;
-    }
-    .container-modified{
-        padding-left:50px;
-        padding-right:50px;
+        padding-left:5vw;
+        padding-right:5vw;
     }
     hr{
         border-top: 1px solid white;
