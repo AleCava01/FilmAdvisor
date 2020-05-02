@@ -43,7 +43,7 @@
                 <div class="carousel-item active">
                         <?php
                         echo("<a href='video_buffer.php?id_f=".$IDs[0]."'>");
-                        echo("<img src='".$covers[0]."' class='d-block w-100' alt='...'>");
+                        echo("<img src='".$covers[0]."' class='d-block w-100 img-custom' alt='...'>");
                         ?>
 
                         <div class="carousel-caption d-none d-md-block w-100" style="left:0; bottom:0">
@@ -59,7 +59,7 @@
                 for($i=1; $i<count($IDs); $i++){
                     echo("<div class='carousel-item'>");
                     echo("<a href='video_buffer.php?id_f=".$IDs[$i]."'>");
-                    echo("<img src=".$covers[$i]." class='d-block w-100' alt='...'>");
+                    echo("<img src=".$covers[$i]." class='d-block w-100 img-custom' alt='...'>");
                     echo("<div class='carousel-caption d-none d-md-block w-100' style='left:0; bottom:0'>");
                     echo("<h5>".$titles[$i]."</h5>");
                     echo("<p>".$descriptions[$i]."</p></div></a></div>");
