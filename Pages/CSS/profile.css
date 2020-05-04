@@ -24,6 +24,12 @@ body{
     width: 5%;
 
 }
+.abbonamento-title-td{
+    font-weight: 600;
+    font-size: 1.1vw;
+    width: 20%;
+
+}
 .data-td{
     font-weight: 300;
     font-size: 1.1vw;
