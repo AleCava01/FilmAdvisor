@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="stylesheet" href="CSS/profile.css">
 
 </head>
@@ -54,8 +55,7 @@
         include "modifica_password.php";
 
         ?>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>     
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
         <script>

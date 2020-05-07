@@ -1,6 +1,6 @@
 <!-- Modal per la modifica dell'email -->
-<div class="modal fade" id="modifica_email" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade " id="modifica_email" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="modifica_email_title">Modifica email</h5>
@@ -18,9 +18,18 @@
                 </div>
                 <div class="form-group">
                     <label>Password attuale:</label>
-                    <input type="password" class="form-control" id="password" onchange="validate()" required>
-                    <div class="invalid-feedback" id="password_feedback">
-                        Password errata
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" onchange="validate()" required>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <button onclick="toggle('password')" style="border:none;outline:none;">
+                                    <i class="fas fa-eye" id="password_icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" id="password_feedback">
+                            Password errata
+                        </div>
                     </div>
                 </div>
             ATTENZIONE: una mail di conferma dell'operazione verrà inviata anche all'indirizzo <?php echo($dati_utente['email']);?>

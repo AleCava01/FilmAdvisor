@@ -50,6 +50,7 @@ body{
 hr{
     border-top: 1px solid white;
 }
+
 @media only screen and (max-width: 900px) and (orientation:portrait) {
     .title{
         color:white;

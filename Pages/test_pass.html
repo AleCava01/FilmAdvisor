@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Show/Hide Password Using BS4 &jQuery</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+</head>
+<body class="bg-info">
+
+ <div class="container">
+  
+  <div class="row justify-content-center">
+   
+   <div class="col-lg-5 bg-light mt-3 rounded">
+    <h4 class="text-center text-info p-2">Show/Hide Password Using BS4 &jQuery</h4>
+    <form action="#" method="POST" class="p-3">
+     
+     <div class="form-group">
+      
+      <input type="text" name="Username" class="form-control form-control-lg rounded" placeholder="Username">
+
+     </div>
+
+     <div class="form-group input-group">
+      
+      <input type="password" name="Password" class="form-control form-control-lg rounded-0" placeholder="Password" id="passw">
+      <div class="input-group-prepend rounded-0">
+       <div class="input-group-text">
+        <a href="#" class="text-dark" id="icon-click">
+         <i class="fa-eye fas" id="icon"></i>
+        </a>
+       </div>
+      </div>
+     </div>
+
+     <div class="form-group">
+      
+      <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg rounded">
+     </div>
+
+    </form>
+    
+   </div>
+
+  </div>
+
+ </div>
+
+
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ 
+ <script type="text/javascript">
+  $(document).ready(function(){
+
+   $("#icon-click").click(function(){
+
+    $("#icon").toggleClass('fa-eye-slash');
+
+    var input = $("#pass_password_old");
+
+    if(input.attr("type") == "text")
+    {
+     input.attr("type","password");
+    }
+    else
+    {
+     input.attr("type","text");
+    }
+   });
+
+  });
+ </script>  
+
+</body>
+</html>
