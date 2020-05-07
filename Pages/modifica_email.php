@@ -1,23 +1,23 @@
 <!-- Modal per la modifica dell'email -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modifica_email" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modifica email</h5>
+            <h5 class="modal-title" id="modifica_email_title">Modifica email</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
                 <div class="form-group">
-                    <label for="validationCustom01">Nuova email:</label>
+                    <label>Nuova email:</label>
                     <input type="email" class="form-control" id="email_new" onchange="validate()" required>
                     <div class="invalid-feedback" id="email_feedback">
                         Inserire un indirizzo email valido
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="validationCustom01">Password attuale:</label>
+                    <label>Password attuale:</label>
                     <input type="password" class="form-control" id="password" onchange="validate()" required>
                     <div class="invalid-feedback" id="password_feedback">
                         Password errata
@@ -36,7 +36,7 @@
     </div>
 </div>
 <script>
-    var password_input = document.getElementById("password");
+var password_input = document.getElementById("password");
 var password_feedback = document.getElementById("password_feedback");
 
 var email_input = document.getElementById("email_new");
@@ -80,7 +80,7 @@ function reset_email(){
         password_input.className = "form-control is-invalid";
     }
 
-    if(password != "" && email_new != ""){
+    if(password != "" && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.exec(email_new)){
         xhr.onload = function(){
             if(this.responseText == "not_match"){
                 password_input.className = "form-control is-invalid";
