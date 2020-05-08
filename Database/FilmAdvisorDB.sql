@@ -12,7 +12,7 @@ create table utente(
     datanascita date not null,
     sesso int not null,
     via varchar(255) not null,
-    civico int not null,
+    civico varchar(255) not null,
     citta varchar(255) not null,
     provincia varchar(255) not null,
     cap int not null,
@@ -83,7 +83,7 @@ insert into film(titolo, descrizione, locandina, copertina, URI,trailer_URI,dura
 insert into film(titolo, descrizione, locandina, copertina, URI,trailer_URI,durata, regista) values ("C'era una volta a... Hollywood", "Rick Dalton, attore televisivo di telefilm western in declino, e la sua controfigura Cliff Booth cercano di ottenere ingaggi e fortuna nell'industria cinematografica al tramonto dell'età dell'oro di Hollywood.", "Images/locandine/c_era_una_volta_a_hollywood.jpg","Images/copertine/c_era_una_volta_a_hollywood.png","Movies/c_era_una_volta_a_hollywood.mp4","Trailers/c_era_una_volta_a_hollywood.mp4", 200, "Quentin Tarantino");
 
 /*UTENTE PROVA - AleCava01:pollo*/
-insert into utente(username,password,email,nome,cognome,datanascita,sesso,via,civico,citta,provincia,cap,immagine) values("AleCava01", "$2y$10$UYQOVuamCwANOgaGHgzyOeGj81IWq.SrR0J3EDmKCEWVpql7PGrqC","alessandro.cavalieri5@gmail.com","Alessandro","Cavalieri","2001/05/10",1,"via campo gallo",49,"Arese","MI",20020,"Images/profile/default.png");
+insert into utente(username,password,email,nome,cognome,datanascita,sesso,via,civico,citta,provincia,cap,immagine) values("AleCava01", "$2y$10$UYQOVuamCwANOgaGHgzyOeGj81IWq.SrR0J3EDmKCEWVpql7PGrqC","alessandro.cavalieri5@gmail.com","Alessandro","Cavalieri","2001/05/10",1,"via campo gallo","49","Arese","MI",20020,"Images/profile/default.png");
 /* NON COPIARE - Abbonamento test*/ 
 insert into abbonamento(tipo,inzio,scadenza,importo,pagamento,id_u) values (1,"2020/04/02","2020/07/02",18,2,1);
 insert into abbonamento(tipo,inzio,scadenza,importo,pagamento,id_u) values (1,"2020/04/02","2020/05/04",18,2,1);

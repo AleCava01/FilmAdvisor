@@ -26,7 +26,7 @@
             echo("<tr><td class='title-td'>Username:</td><td class='data-td'>".$dati_utente["username"]."</td></tr>");
             echo("<tr><td class='title-td'>Email:</td><td class='data-td'>".$dati_utente["email"]."</td><td class='link-td'><a data-toggle='modal' data-target='#modifica_email' href='#'>Modifica email</a></td></tr>");
             echo("<tr><td class='title-td'>Password:</td><td class='data-td'>**********</td><td class='link-td'><a data-toggle='modal' data-target='#modifica_password' href='#'>Modifica password</a></td></tr>");
-            echo("<tr><td class='title-td'>Indirizzo:</td><td class='data-td'>".$dati_utente["via"]." ".$dati_utente["civico"].", ".$dati_utente["citta"]."(".$dati_utente["provincia"].") [".$dati_utente["cap"]."]</td><td class='link-td'><a href='modifica.php'>Modifica indirizzo</a></td></tr>");
+            echo("<tr><td class='title-td'>Indirizzo:</td><td class='data-td'>".$dati_utente["via"]." ".$dati_utente["civico"].", ".$dati_utente["citta"]."(".$dati_utente["provincia"].") [".$dati_utente["cap"]."]</td><td class='link-td'><a data-toggle='modal' data-target='#modifica_indirizzo' href='#'>Modifica indirizzo</a></td></tr>");
             echo("</table>");
             echo("<br>");
             //abbonamento
@@ -53,8 +53,11 @@
         <?php
         include "modifica_email.php";
         include "modifica_password.php";
+        include "modifica_indirizzo.php";
+
 
         ?>
+        <script src="Scripts/password_toggler.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>     
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
