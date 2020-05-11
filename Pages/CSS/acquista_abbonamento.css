@@ -1,0 +1,299 @@
+
+@media screen and (min-width: 1200px) {
+    .title{
+        color:white;
+        text-align: center;
+    }
+    .sub-title{
+        color:white;
+        text-align: center;
+        padding-top:10px;
+    }
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .month{
+        height: 400px;
+        width: 300px;
+        background-color: rgba(255, 0, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+            cursor: pointer;
+    
+    }
+    .month:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        background-color: rgba(255, 0, 0, 0.601);
+    
+        transition:0.3s;
+    }
+    .quarter{
+        height: 400px;
+        width: 300px;
+        background-color: rgba(255, 136, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+        cursor: pointer;
+    
+    }
+    .quarter:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 136, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 136, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 136, 0, 0.402);
+        background-color: rgba(255, 136, 0, 0.601);
+        transition:0.3s;
+    }
+    .year{
+        height: 400px;
+        width: 300px;
+        background-color: rgba(255, 208, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+    
+    }
+    .year:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        background-color: rgba(255, 208, 0, 0.601);
+        transition:0.3s;
+            cursor: pointer;
+    
+    }
+    .row{
+        padding-top:20px;
+        padding-left:20px;
+        padding-right:20px;
+        height: 100%;
+        text-align: center;
+    }
+    .price{
+        font-size: 30px;
+    }
+    .sub_months{
+        font-size:40px;
+    }
+    .page-title{
+        transition:0.4s;
+    }
+    
+    .sub-container{
+        position:relative;
+    }
+    .sub-inner-bottom{
+        position: absolute;
+        bottom:0;
+        width:100%;
+        margin-bottom: 10px;
+    }
+    .sub-inner-center{
+        position: absolute;
+        top: 40%; left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+@media screen and (max-width: 1200px) {
+    .title{
+        color:white;
+        text-align: center;
+    }
+    .sub-title{
+        color:white;
+        text-align: center;
+        padding-top:10px;
+    }
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .month{
+        height: 300px;
+        width: 200px;
+        background-color: rgba(255, 0, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+            cursor: pointer;
+    
+    }
+    .month:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        background-color: rgba(255, 0, 0, 0.601);
+    
+        transition:0.3s;
+    }
+    .quarter{
+        height: 300px;
+        width: 200px;
+        background-color: rgba(255, 102, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+        cursor: pointer;
+    
+    }
+    .quarter:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 102, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 102, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 102, 0, 0.402);
+        background-color: rgba(255, 102, 0, 0.601);
+        transition:0.3s;
+    }
+    .year{
+        height: 300px;
+        width: 200px;
+        background-color: rgba(255, 208, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+    
+    }
+    .year:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        background-color: rgba(255, 208, 0, 0.601);
+        transition:0.3s;
+            cursor: pointer;
+    
+    }
+    .row{
+        padding-top:20px;
+        padding-left:20px;
+        padding-right:20px;
+        height: 100%;
+        text-align: center;
+    }
+    .price{
+        font-size: 30px;
+    }
+    .sub_months{
+        font-size:40px;
+    }
+    .page-title{
+        transition:0.4s;
+
+    }
+    .sub-container{
+        position:relative;
+    }
+    .sub-inner-bottom{
+        position: absolute;
+        bottom:0;
+        width:100%;
+        margin-bottom: 10px;
+    }
+    .sub-inner-center{
+        position: absolute;
+        top: 40%; left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+@media screen and (max-width: 767px) {
+    *{
+        margin:0;
+        padding:0;
+    }
+    .title{
+        color:white;
+        text-align: center;
+    }
+    .sub-title{
+        color:white;
+        text-align: center;
+        padding-top:10px;
+    }
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .month{
+        height: 20vh;
+        width: 100%;
+        background-color: rgba(255, 0, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+        cursor: pointer;
+        margin:5px;
+    
+    }
+    .month:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.402);
+        background-color: rgba(255, 0, 0, 0.601);
+    
+        transition:0.3s;
+    }
+    .quarter{
+        height: 20vh;
+        width: 100%;
+        background-color: rgba(255, 102, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+        cursor: pointer;
+        margin:5px;
+    
+    }
+    .quarter:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 102, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 102, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 102, 0, 0.402);
+        background-color: rgba(255, 102, 0, 0.601);
+        transition:0.3s;
+    }
+    .year{
+        height: 20vh;
+        width: 100%;
+        background-color: rgba(255, 208, 0, 0.402);
+        border-radius: 10px;
+        transition:0.3s;
+        margin:5px;
+    }
+    .year:hover{
+        -moz-box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        -webkit-box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        box-shadow: 0 0 50px rgba(255, 208, 0, 0.402);
+        background-color: rgba(255, 208, 0, 0.601);
+        transition:0.3s;
+        cursor: pointer;
+    
+    }
+    .row{
+        padding-top:20px;
+        padding-left:20px;
+        padding-right:20px;
+        height: 100%;
+        text-align: center;
+    }
+    .price{
+        font-size: 20px;
+    }
+    .sub_months{
+        font-size:30px;
+    }
+    .page-title{
+        font-size: 20px;
+        transition:0.4s;
+    }
+    .separator-hr{
+        display: none;
+    }
+    .sub-container{
+        width:100%;
+    }
+    .sub-inner-bottom{
+        width:100%;
+    }
+    .sub-inner-center{
+        width:100%;
+    }
+    .row{
+        width:500px;
+    }
+}

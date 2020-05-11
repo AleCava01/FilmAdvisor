@@ -1,4 +1,4 @@
-<!-- Modal per la modifica dell'email -->
+<!-- Modal per la modifica dell'indirizzo -->
 <div class="modal fade" id="modifica_indirizzo" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog " role="document">
         <div class="modal-content">

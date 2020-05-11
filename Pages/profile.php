@@ -26,23 +26,23 @@
             echo("<tr><td class='title-td'>Username:</td><td class='data-td'>".$dati_utente["username"]."</td></tr>");
             echo("<tr><td class='title-td'>Email:</td><td class='data-td'>".$dati_utente["email"]."</td><td class='link-td'><a data-toggle='modal' data-target='#modifica_email' href='#'>Modifica email</a></td></tr>");
             echo("<tr><td class='title-td'>Password:</td><td class='data-td'>**********</td><td class='link-td'><a data-toggle='modal' data-target='#modifica_password' href='#'>Modifica password</a></td></tr>");
-            echo("<tr><td class='title-td'>Indirizzo:</td><td class='data-td'>".$dati_utente["via"]." ".$dati_utente["civico"].", ".$dati_utente["citta"]."(".$dati_utente["provincia"].") [".$dati_utente["cap"]."]</td><td class='link-td'><a data-toggle='modal' data-target='#modifica_indirizzo' href='#'>Modifica indirizzo</a></td></tr>");
+            echo("<tr><td class='title-td'>Indirizzo:</td><td class='data-td'>".$dati_utente["via"]." ".$dati_utente["civico"].", ".$dati_utente["citta"]." (".$dati_utente["provincia"]."), CAP: ".$dati_utente["cap"]."</td><td class='link-td'><a data-toggle='modal' data-target='#modifica_indirizzo' href='#'>Modifica indirizzo</a></td></tr>");
             echo("</table>");
             echo("<br>");
             //abbonamento
             echo("<div class='semi-title'><h6 class='semi-title-h6'>Abbonamento</h6></div>");
             echo("<hr>");
-            $abbonamento_query_result = $conn -> query("SELECT * FROM abbonamento WHERE scadenza".">="."'".date("Y-n-d")."' and id_u=".$id_u.";");
+            $abbonamento_query_result = $conn -> query("SELECT * FROM abbonamento WHERE scadenza".">="."'".date("Y-m-d")."' and id_u=".$id_u.";");
             $abbonamento = mysqli_fetch_assoc($abbonamento_query_result);
 
             if($abbonamento["scadenza"]!=""){
                 echo("<table class='user-data-table'>");
-                echo("<tr><td class='abbonamento-title-td'>L'abbonemento scade il </td><td class='data-td'>".$abbonamento["scadenza"]."</td><td class='link-td'><a href='prolunga.php'>Prolunga abbonamento</a></td></tr>");
+                echo("<tr><td class='abbonamento-title-td'>L'abbonemento scade il </td><td class='data-td'>".$abbonamento["scadenza"]."</td><td class='link-td'><a href='acquista_abbonamento.php'>Prolunga abbonamento</a></td></tr>");
                 echo("</table>");
             }
             else{
                 echo("<table class='user-data-table'>");
-                echo("<tr><td class='abbonamento-title-td'>Il tuo abbonamento è scaduto</td><td class='link-td'><a href='rinnova.php'>Rinnova abbonamento</a></td></tr>");
+                echo("<tr><td class='abbonamento-title-td'>Il tuo abbonamento è scaduto</td><td class='link-td'><a href='acquista_abbonamento.php'>Rinnova abbonamento</a></td></tr>");
                 echo("</table>");
             }
             
