@@ -35,9 +35,11 @@
             $abbonamento_query_result = $conn -> query("SELECT * FROM abbonamento WHERE scadenza".">="."'".date("Y-m-d")."' and id_u=".$id_u.";");
             $abbonamento = mysqli_fetch_assoc($abbonamento_query_result);
 
+            $scadenza_date = strtotime($abbonamento["scadenza"]);
+        
             if($abbonamento["scadenza"]!=""){
                 echo("<table class='user-data-table'>");
-                echo("<tr><td class='abbonamento-title-td'>L'abbonemento scade il </td><td class='data-td'>".$abbonamento["scadenza"]."</td><td class='link-td'><a href='acquista_abbonamento.php'>Prolunga abbonamento</a></td></tr>");
+                echo("<tr><td class='abbonamento-title-td'>L'abbonamento scade il giorno </td><td class='data-td'>".date('d', $scadenza_date)." ".num_to_month(date('m', $scadenza_date))." ".date('Y', $scadenza_date)."</td><td class='link-td'><a href='acquista_abbonamento.php'>Prolunga abbonamento</a></td></tr>");
                 echo("</table>");
             }
             else{
@@ -46,6 +48,44 @@
                 echo("</table>");
             }
             
+            function num_to_month($mese){
+                if($mese == 1){
+                    return "Gennaio";
+                }
+                if($mese == 2){
+                    return "Febbraio";
+                }
+                if($mese == 3){
+                    return "Marzo";
+                }
+                if($mese == 4){
+                    return "Aprile";
+                }
+                if($mese == 5){
+                    return "Maggio";
+                }
+                if($mese == 6){
+                    return "Giugno";
+                }
+                if($mese == 7){
+                    return "Luglio";
+                }
+                if($mese == 88){
+                    return "Agosto";
+                }
+                if($mese == 9){
+                    return "Settembre";
+                }
+                if($mese == 10){
+                    return "Ottobre";
+                }
+                if($mese == 11){
+                    return "Novembre";
+                }
+                if($mese == 12){
+                    return "Dicembre";
+                }
+            }
             
             ?>
         </div>
