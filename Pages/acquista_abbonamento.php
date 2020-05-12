@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="CSS/navbar2.css">
         <link rel="stylesheet" href="fontawesome/css/all.css">
+        <link rel="icon" href="Images/icon.png">
+
 
     </head>
     <body style="background-color: rgb(8, 8, 8);">
@@ -21,7 +23,7 @@
                     </ul>
             </nav>
             <div class='title'>
-                <h2 class="page-title">Acquista o rinnova il tuo abbonamento!</h2>
+                <h2 class="page-title">Scegli l'abbonamento che fa per te!</h2>
             </div>
             <div class="container d-flex justify-content-center">
                 <div class="row">
@@ -45,7 +47,7 @@
                             <div class="quarter sub-title sub-container">
                                 <div class="sub-container" style="height:100%">
                                     <div class="sub-inner-center">
-                                        <h6 class="sub_months">3 Mesi</h6><span class="badge badge-secondary">Il più venduto</span>
+                                        <h6 class="sub_months">3 Mesi</h6>
                                     </div>
                                 </div>
                                 <div class="sub-inner-bottom">
@@ -61,7 +63,7 @@
                             <div class="year sub-title sub-container">
                                 <div class="sub-container" style="height:100%">
                                     <div class="sub-inner-center">
-                                        <h6 class="sub_months">12 Mesi</h6><span class="badge badge-secondary">Il più vantaggioso</span>
+                                        <h6 class="sub_months">12 Mesi</h6>
                                     </div>
                                 </div>
                                 <div class="sub-inner-bottom">

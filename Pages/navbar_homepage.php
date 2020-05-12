@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/navbar2.css">
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" >
-    <a class="nav-link navbar-brand active" href="homepage.php">Film Advisor</a>    
+    <a class="nav-link navbar-brand active" href="homepage.php"><img src="Images/logo.png" width="120px"></a>    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="css/common.css">
 
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="icon" href="Images/icon.png">
 
 
     </head>

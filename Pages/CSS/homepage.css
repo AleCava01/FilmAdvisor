@@ -23,9 +23,8 @@
     background-color: rgb(8, 8, 8);
 
 }
-::-webkit-scrollbar {
-    display: none;
-}
+::-webkit-scrollbar { width: 0 !important }
+
 img{
     object-fit: cover;
 }
@@ -42,6 +41,29 @@ img{
 }
 .semi-title-h5{
     color:white;
+
+}
+.separator{
+    border-top:1px solid white;
+    margin-bottom: 0;
+    width: 95%;
+}
+.category-div{
+    width: 250px;
+    height: 100px;
+    background-color: red;
+    border-radius: 10px;
+}
+.category-title-h5{
+    padding-top:35px;
+    text-align: center;
+}
+.container-categories{
+    width:90vw;
+    margin-left: 5vw;
+}
+.container-fluid{
+    text-align:center;
 }
 @media only screen and (max-width: 900px) and (orientation:portrait) {
     .carousel-caption h5{
@@ -52,3 +74,4 @@ img{
     }
     
 }
+

@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <link rel="stylesheet" href="CSS/profile.css">
+    <link rel="icon" href="Images/icon.png">
 
 </head>
 <body>    
@@ -70,7 +71,7 @@
                 if($mese == 7){
                     return "Luglio";
                 }
-                if($mese == 88){
+                if($mese == 8){
                     return "Agosto";
                 }
                 if($mese == 9){

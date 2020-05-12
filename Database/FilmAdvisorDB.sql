@@ -84,8 +84,51 @@ insert into film(titolo, descrizione, locandina, copertina, URI,trailer_URI,dura
 
 /*UTENTE PROVA - AleCava01:pollo*/
 insert into utente(username,password,email,nome,cognome,datanascita,sesso,via,civico,citta,provincia,cap,immagine) values("AleCava01", "$2y$10$UYQOVuamCwANOgaGHgzyOeGj81IWq.SrR0J3EDmKCEWVpql7PGrqC","alessandro.cavalieri5@gmail.com","Alessandro","Cavalieri","2001/05/10",1,"via campo gallo","49","Arese","MI",20020,"Images/profile/default.png");
+
+/*GENERI*/
+/*1*/insert into genere(nome) values("Animazione");
+/*2*/insert into genere(nome) values("Avventura");
+/*3*/insert into genere(nome) values("Biografico");
+/*4*/insert into genere(nome) values("Commedia");
+/*5*/insert into genere(nome) values("Documentario");
+/*6*/insert into genere(nome) values("Drammatico");
+/*7*/insert into genere(nome) values("Fantascienza");
+/*8*/insert into genere(nome) values("Fantasy");
+/*9*/insert into genere(nome) values("Guerra");
+/*10*/insert into genere(nome) values("Horror");
+/*11*/insert into genere(nome) values("Musical");
+/*12*/insert into genere(nome) values("Storico");
+/*13*/insert into genere(nome) values("Thriller");
+/*14*/insert into genere(nome) values("Western");
+/*15*/insert into genere(nome) values("Comico");
+/*16*/insert into genere(nome) values("Poliziesco");
+/*17*/insert into genere(nome) values("Azione");
+
+/*RACCORDO FILM GENERE*/
+insert into filmgenere(id_f,id_g) values (1,13);
+insert into filmgenere(id_f,id_g) values (1,7);
+insert into filmgenere(id_f,id_g) values (1,17);
+insert into filmgenere(id_f,id_g) values (2,7);
+insert into filmgenere(id_f,id_g) values (2,17);
+insert into filmgenere(id_f,id_g) values (3,7);
+insert into filmgenere(id_f,id_g) values (3,17);
+insert into filmgenere(id_f,id_g) values (4,4);
+insert into filmgenere(id_f,id_g) values (5,8);
+insert into filmgenere(id_f,id_g) values (5,2);
+insert into filmgenere(id_f,id_g) values (6,8);
+insert into filmgenere(id_f,id_g) values (6,2);
+insert into filmgenere(id_f,id_g) values (7,2);
+insert into filmgenere(id_f,id_g) values (7,17);
+insert into filmgenere(id_f,id_g) values (8,7);
+insert into filmgenere(id_f,id_g) values (9,4);
+insert into filmgenere(id_f,id_g) values (9,6);
+
+
+
+
 /* NON COPIARE - Abbonamento test*/ 
 insert into abbonamento(tipo,inzio,scadenza,importo,pagamento,id_u) values (1,"2020/04/02","2020/07/02",18,2,1);
 insert into abbonamento(tipo,inzio,scadenza,importo,pagamento,id_u) values (1,"2020/04/02","2020/05/04",18,2,1);
 insert into abbonamento(tipo,inzio,scadenza,importo,pagamento,id_u) values (1,"2020/04/02","2020/05/12",18,2,1);
+
 
