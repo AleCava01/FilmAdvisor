@@ -20,6 +20,9 @@
     /* IE 10+ */
     -webkit-overflow-scrolling: touch;
     margin: 0 -20px;
+    margin-left:20px;
+    margin-right:20px;
+
   }
   .hs__header {
     display: -webkit-box;
@@ -84,9 +87,13 @@
   }
   @media only screen and (max-width: 990px) {
     .hs__item {
-      flex-basis: calc(100% / 4 - (10px * 2) - (20px / 4));
+      flex-basis: calc(100% / 7 - (10px * 3) - (20px / 7));
     }
   }
+  .hs__item {
+    flex-basis: calc(100% / 7 - (10px * 3) - (20px / 7));
+  }
+
   .hs__item:last-child:after {
     content: "";
     display: block;

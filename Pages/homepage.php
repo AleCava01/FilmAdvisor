@@ -95,30 +95,35 @@
                 ?>
                 <hr class="separator">
                 <br>
-                <div class="container-categories">
-                <div class="hs__wrapper">
-                    <div class="hs__header">
-                        <h5 class="semi-title-h5 hs__headline">Categorie</h5>
-                        <div class="hs__arrows"><a class="arrow disabled arrow-prev"></a><a class="arrow arrow-next"></a></div>
+                <div class="container-categories-outer">
+                    <div class="container-categories">
+                        <div class="hs__wrapper">
+                            <div class="hs__header">
+                                <h5 class="semi-title-h5 hs__headline">Categorie</h5>
+                                <div class="hs__arrows"><a class="arrow disabled arrow-prev"></a><a class="arrow arrow-next"></a></div>
+                            </div>
+                            <ul class="hs">
+                                <?php
+                                $generi = $conn -> query("SELECT * FROM genere WHERE id_g IN (SELECT DISTINCT id_g FROM filmgenere)");
+                                $genere = mysqli_fetch_assoc($generi);
+                                while($genere){
+                                    echo("<li class='hs__item'>");
+                                    echo("<div class='hs__item__image__wrapper'>");
+                                    echo("<div class='category-outer-div'>");
+                                    echo("<div class='category-div'>");
+                                    echo("<h5 class='category-title-h5'>".$genere["nome"]."</h5>");
+                                    echo("</div>");
+                                    echo("</div>");
+                                    echo("</div>");
+                                    echo("</li>");
+                                    $genere = mysqli_fetch_assoc($generi);
+                                }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="hs">
-                        <?php
-                        $generi = $conn -> query("SELECT * FROM genere WHERE id_g IN (SELECT DISTINCT id_g FROM filmgenere)");
-                        $genere = mysqli_fetch_assoc($generi);
-                        while($genere){
-                            echo("<li class='hs__item'>");
-                            echo("<div class='hs__item__image__wrapper'>");
-                            echo("<div class='category-div'>");
-                            echo("<h5 class='category-title-h5'>".$genere["nome"]."</h5>");
-                            echo("</div>");
-                            echo("</div>");
-                            echo("</li>");
-                            $genere = mysqli_fetch_assoc($generi);
-                        }
-                        ?>
-                    </ul>
                 </div>
-                </div>
+
                     
         </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
