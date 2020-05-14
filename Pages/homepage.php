@@ -4,13 +4,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/allfilm.css">
-        <link rel="stylesheet" href="CSS/x-scrolling.css">
         <link rel="icon" href="Images/icon.png">
+        <link rel="stylesheet" href="OwlCarousel/dist/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="OwlCarousel/dist/assets/owl.theme.default.min.css">
 
 
 
     </head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="70">
+    <body data-spy="scroll" data-target=".navbar" data-offset="70" onhashchange="doAll()">
     <div id="suggested" class="container-fluid"></div>
 
     <?php
@@ -82,56 +83,48 @@
         </div>
         <div id="allMovies" class="container-fluid" style="min-height: 55px;"></div>
 
-        <div class="container-fluid" style="min-height: 100%;">
+        <div class="container-fluid" style="height: 94%;">
                 <br>
                 <h5 class="semi-title-h5" style="text-align:center;">Tutti i film</h5>
-                <?php
-                $movies = $conn -> query("SELECT * FROM film");
-                $film = mysqli_fetch_assoc($movies);
-                while($film){
-                    echo("<div class='locandina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div>");
+                <div class="owl-carousel owl-theme" id="allMovies-carousel">
+                    <?php
+                    $movies = $conn -> query("SELECT * FROM film");
                     $film = mysqli_fetch_assoc($movies);
-                }
-                ?>
-                <hr class="separator">
-                <br>
-                <div class="container-categories-outer">
-                    <div class="container-categories">
-                        <div class="hs__wrapper">
-                            <div class="hs__header">
-                                <h5 class="semi-title-h5 hs__headline">Categorie</h5>
-                                <div class="hs__arrows"><a class="arrow disabled arrow-prev"></a><a class="arrow arrow-next"></a></div>
-                            </div>
-                            <ul class="hs">
-                                <?php
-                                $generi = $conn -> query("SELECT * FROM genere WHERE id_g IN (SELECT DISTINCT id_g FROM filmgenere)");
-                                $genere = mysqli_fetch_assoc($generi);
-                                while($genere){
-                                    echo("<li class='hs__item'>");
-                                    echo("<div class='hs__item__image__wrapper'>");
-                                    echo("<div class='category-outer-div'>");
-                                    echo("<div class='category-div'>");
-                                    echo("<h5 class='category-title-h5'>".$genere["nome"]."</h5>");
-                                    echo("</div>");
-                                    echo("</div>");
-                                    echo("</div>");
-                                    echo("</li>");
-                                    $genere = mysqli_fetch_assoc($generi);
-                                }
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
+                    while($film){
+                        echo("<div class='item'><div class='locandina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div></div>");
+                        $film = mysqli_fetch_assoc($movies);
+                    }
+                    ?>
                 </div>
-
-                    
+                <hr class="separator">
+                <div class="owl-carousel owl-theme" id="category-carousel">
+                    <?php
+                    $generi = $conn -> query("SELECT * FROM genere WHERE id_g IN (SELECT DISTINCT id_g FROM filmgenere)");
+                    $genere = mysqli_fetch_assoc($generi);
+                    while($genere){
+                        echo("<div class='item' data-hash='".$genere["nome"]."' id='".$genere["nome"]."'>");
+                        echo("<div class='category-outer-div'>");
+                        echo("<div class='category-div'>");
+                        echo("<h6 class='category-title-h5'>".$genere["nome"]."</h6>");
+                        echo("</div>");
+                        echo("</div>");
+                        echo("</div>");
+                        $genere = mysqli_fetch_assoc($generi);
+                    }
+                    ?>
+                </div>
+                <hr class="selection-indicator-hr">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src="bootstrap/js/bootstrap.min.js"></script>
+                <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
+                <script src="jquery-mousewheel/jquery.mousewheel.min.js"></script>
+                <script>var scroll = new SmoothScroll('a[href*="#"]');</script>
+                <script src="OwlCarousel/dist/owl.carousel.min.js"></script>
+                <script src="Scripts/owl-carousels.js"></script>
+                <div id="selected-category"></div>
+            </div>
+                <script src="Scripts/category-toggler.js"></script>
         </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
-    <script>var scroll = new SmoothScroll('a[href*="#"]');</script>
-    <script src="Scripts/scroll.js"></script>
-
-
+    
     </body>
 </html>

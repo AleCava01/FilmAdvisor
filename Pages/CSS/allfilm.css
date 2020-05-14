@@ -5,8 +5,8 @@
 
 }
 .locandina_div{
-    padding: 1vw;
     display: inline-flex;
+    padding:0.5vw;
 }
 
 .locandina_img:hover{
