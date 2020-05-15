@@ -1,7 +1,7 @@
 function handleData(data){
-    document.getElementById("selected-category").innerHTML=data;
+    var response = data.split("!SCRIPT!");
+    document.getElementById("selected-category").innerHTML=response[0];
     var filmCatOwl = $('#film-cat-carousel');
-
     filmCatOwl.owlCarousel({
         loop:true,
         margin:10,
@@ -38,37 +38,29 @@ function handleData(data){
         }
         e.preventDefault();
     });
-    
+
+    eval(response[1]);
+
 }
-function testAjax(handleData) {
-    if(window.location.hash) {
-        var hash = window.location.hash.substring(1);
-        if(hash!="" && hash!="AllMovies"){
-            $.ajax({
-                url: 'category.php',
-                type: 'POST',
-                data: {
-                    genere: hash,
-                },  
-                success:function(data1) {
-                  handleData(data1); 
-                }
-              });
-        }
-    }
-}
-function doAll(){
-    testAjax(handleData);
-}
-function showCategory(){
+function sendAjax(hash, handleData) {  
     $.ajax({
         url: 'category.php',
         type: 'POST',
         data: {
             genere: hash,
-        },
-        success: function(msg) {
-            alert('Email Sent');
-        }               
+        },  
+        success:function(data1) {
+            handleData(data1); 
+        }
     });
+}
+function doAll(){
+    var hash ="";
+    if(window.location.hash) {
+        hash = window.location.hash.substring(1);
+    }
+    if(hash=="" || hash=="suggested"){
+        hash="allMovies";
+    }
+    sendAjax(hash,handleData);
 }

@@ -1,6 +1,10 @@
 var categoryOwl = $('#category-carousel');
 var allMoviesOwl = $('#allMovies-carousel');
+$('#category-carousel').children().each( function( index ) {
+    $(this).attr( 'data-position', index ); // NB: .attr() instead of .data()
+    });
 
+  
 categoryOwl.owlCarousel({
     loop:true,
     margin:10,
@@ -12,7 +16,7 @@ categoryOwl.owlCarousel({
     responsive:{
         0:{
             nav:false,
-            items:3
+            items:1
         },
         600:{
             items:5
@@ -22,6 +26,9 @@ categoryOwl.owlCarousel({
         }
     }
 })
+$(document).on('click', '.owl-item>div', function() {
+    $('#category-carousel').trigger('to.owl.carousel', $(this).data( 'position' ) ); 
+    });
 allMoviesOwl.owlCarousel({
     loop:true,
     margin:10,

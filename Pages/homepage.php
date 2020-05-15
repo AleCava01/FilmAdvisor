@@ -11,7 +11,7 @@
 
 
     </head>
-    <body data-spy="scroll" data-target=".navbar" data-offset="70" onhashchange="doAll()">
+    <body data-spy="scroll" data-target=".navbar" data-offset="70">
     <div id="suggested" class="container-fluid"></div>
 
     <?php
@@ -20,7 +20,7 @@
         include "navbar_homepage.php";
 
         //get suggested Film IDs for the user via py script (?)
-        $IDs = array(1,2,5);
+        $IDs = array(1,5,7);
         $covers = array();
         $titles = array();
         $descriptions = array();
@@ -83,48 +83,82 @@
         </div>
         <div id="allMovies" class="container-fluid" style="min-height: 55px;"></div>
 
-        <div class="container-fluid" style="height: 94%;">
-                <br>
-                <h5 class="semi-title-h5" style="text-align:center;">Tutti i film</h5>
-                <div class="owl-carousel owl-theme" id="allMovies-carousel">
-                    <?php
-                    $movies = $conn -> query("SELECT * FROM film");
-                    $film = mysqli_fetch_assoc($movies);
-                    while($film){
-                        echo("<div class='item'><div class='locandina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div></div>");
-                        $film = mysqli_fetch_assoc($movies);
-                    }
-                    ?>
-                </div>
-                <hr class="separator">
+        <div id="moviesContainer" class="container-fluid" style="height: 94%;">
+                
                 <div class="owl-carousel owl-theme" id="category-carousel">
                     <?php
                     $generi = $conn -> query("SELECT * FROM genere WHERE id_g IN (SELECT DISTINCT id_g FROM filmgenere)");
                     $genere = mysqli_fetch_assoc($generi);
+                    echo("<div class='item' data-hash='allMovies'>");
+                    echo("<a href='#allMovies'>");
+                    echo("<div class='category-outer-div' data-position='0'>");
+                    echo("<div class='category-div'>");
+                    echo("<h5 class='category-title-h5'>Tutti i film</h5>");
+                    echo("</div>");
+                    echo("</div>");
+                    echo("</a>");
+                    echo("</div>");
+                    $pos=1;
                     while($genere){
                         echo("<div class='item' data-hash='".$genere["nome"]."' id='".$genere["nome"]."'>");
-                        echo("<div class='category-outer-div'>");
+                        echo("<a class='category-a' href='#".$genere["nome"]."'>");
+                        echo("<div class='category-outer-div' data-position='".$pos."'>");
                         echo("<div class='category-div'>");
-                        echo("<h6 class='category-title-h5'>".$genere["nome"]."</h6>");
+                        echo("<h5 class='category-title-h5'>".$genere["nome"]."</h5>");
                         echo("</div>");
                         echo("</div>");
+                        echo("</a>");
                         echo("</div>");
+                        $pos=$pos+1;
                         $genere = mysqli_fetch_assoc($generi);
                     }
                     ?>
                 </div>
                 <hr class="selection-indicator-hr">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                <script src="bootstrap/js/bootstrap.min.js"></script>
-                <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
-                <script src="jquery-mousewheel/jquery.mousewheel.min.js"></script>
-                <script>var scroll = new SmoothScroll('a[href*="#"]');</script>
-                <script src="OwlCarousel/dist/owl.carousel.min.js"></script>
-                <script src="Scripts/owl-carousels.js"></script>
                 <div id="selected-category"></div>
+                <?php
+                $film_res = $conn -> query("SELECT * FROM film");
+                $film = mysqli_fetch_assoc($film_res);
+                while($film){
+                    echo("<div class='div-".$film["id_f"]."-desc film-info-div' id='div-".$film["id_f"]."-desc' style='background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(".$film["copertina"]."); background-repeat:no-repeat;background-position: center center; background-size:cover;'>");
+                    echo("<div class='row' style='height:100%;'>");
+                    echo("<div class='col-9'>");
+                    echo("<h4 class='category-info-title-h4'>".$film["titolo"]."</h4>");
+                    echo("<p class='category-info-desc-p'>".$film["descrizione"]."</p>");
+                    echo("<p class='category-info-reg-p'>Regista: ".$film["regista"]."</p>");
+                    echo("</div>");
+                    echo("<div class='col-3'>");
+                    echo("<img class='film-info-img' src='".$film["locandina"]."'>");
+                    echo("</div>");
+                    echo("</div>");
+                    echo("</div>");
+
+                    $film = mysqli_fetch_assoc($film_res);
+                }
+                ?>
+
+                <!-- <hr class="separator"> -->
+                
             </div>
-                <script src="Scripts/category-toggler.js"></script>
+                
         </div>
-    
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="bootstrap/js/bootstrap.min.js"></script>
+            <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
+            <script src="jquery-mousewheel/jquery.mousewheel.min.js"></script>
+            <script>var scroll = new SmoothScroll('a[href*="#"]');</script>
+            <script src="OwlCarousel/dist/owl.carousel.min.js"></script>
+            <script src="Scripts/owl-carousels.js"></script>        
+            <script src="Scripts/category-toggler.js"></script>
+            <script>
+            doAll();
+            window.addEventListener('hashchange', function() {
+                doAll();
+            }, false);
+            
+            if (!sessionStorage.getItem("is_reloaded")) window.location.hash = "";;
+
+            </script>
+            
     </body>
 </html>

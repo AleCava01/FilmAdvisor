@@ -81,6 +81,39 @@ img{
 .owl-carousel{
     min-height: 70px;
 }
+.owl-item.active.center{
+    font-size: 40px;
+}
+
+.film-info-div{
+    display: none;
+    height:100%;
+    /* -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover; */
+    padding-left: 10px;
+     margin-left: -10px;
+    
+}
+.film-info-img{
+    height:auto;
+    width:90%;
+    margin:0 auto;
+}
+.category-info-title-h4{
+    text-align: center;
+    color:white;
+}
+.category-info-desc-p{
+    color:white;
+    text-align: left;
+}
+.category-info-reg-p{
+    text-align: left;
+
+    color:white;
+}
+
 @media only screen and (max-width: 990px) {
     .category-outer-div{
         display: flex;

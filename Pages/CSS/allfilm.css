@@ -2,19 +2,20 @@
     height:12vw;
     width: 8.4vw;
     transition:0.3s;
+    opacity: 0.8;
 
 }
 .locandina_div{
     display: inline-flex;
     padding:0.5vw;
+
 }
 
 .locandina_img:hover{
-    -moz-box-shadow: 0 0 5px #ccc;
-    -webkit-box-shadow: 0 0 5px #ccc;
-    box-shadow: 0 0 5px #ccc;
+    opacity: 1;
     transition:0.3s;
 }
+
   
 @media screen and (max-width: 479px) {
     .locandina_img{
