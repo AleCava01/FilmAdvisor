@@ -28,7 +28,7 @@ categoryOwl.owlCarousel({
 })
 $(document).on('click', '.owl-item>div', function() {
     $('#category-carousel').trigger('to.owl.carousel', $(this).data( 'position' ) ); 
-    });
+});
 allMoviesOwl.owlCarousel({
     loop:true,
     margin:10,

@@ -83,7 +83,7 @@
         </div>
         <div id="allMovies" class="container-fluid" style="min-height: 55px;"></div>
 
-        <div id="moviesContainer" class="container-fluid" style="height: 94%;">
+        <div id="moviesContainer" class="container-fluid" style="height: 95%;display: flex; flex-direction: column;">
                 
                 <div class="owl-carousel owl-theme" id="category-carousel">
                     <?php
@@ -114,21 +114,33 @@
                     }
                     ?>
                 </div>
+                <div>
                 <hr class="selection-indicator-hr">
                 <div id="selected-category"></div>
+                </div>
+                
+                <div style="height:100%;">
                 <?php
                 $film_res = $conn -> query("SELECT * FROM film");
                 $film = mysqli_fetch_assoc($film_res);
                 while($film){
                     echo("<div class='div-".$film["id_f"]."-desc film-info-div' id='div-".$film["id_f"]."-desc' style='background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(".$film["copertina"]."); background-repeat:no-repeat;background-position: center center; background-size:cover;'>");
-                    echo("<div class='row' style='height:100%;'>");
+                    echo("<div>");
+                    echo("<h1 class='film-info-title'>".$film["titolo"]."</h1>");
+
+                    echo("</div>");
+
+                    echo("<div class='row' style='height:85%'>");
                     echo("<div class='col-9'>");
-                    echo("<h4 class='category-info-title-h4'>".$film["titolo"]."</h4>");
-                    echo("<p class='category-info-desc-p'>".$film["descrizione"]."</p>");
-                    echo("<p class='category-info-reg-p'>Regista: ".$film["regista"]."</p>");
+                    echo("<h5 class='film-info-semi-title'>Descrizione</h5>");
+                    echo("<p class='film-info-desc-p'>".$film["descrizione"]."</p>");
+                    echo("<h5 class='film-info-semi-title'>Regista</h5>");
+                    echo("<p class='film-info-reg-p'>".$film["regista"]."</p>");
                     echo("</div>");
                     echo("<div class='col-3'>");
-                    echo("<img class='film-info-img' src='".$film["locandina"]."'>");
+                    echo("<div class='locandina-info-wrapper'>");
+                    echo("<img class='film-info-img align-middle' src='".$film["locandina"]."'>");
+                    echo("</div>");
                     echo("</div>");
                     echo("</div>");
                     echo("</div>");
@@ -136,6 +148,7 @@
                     $film = mysqli_fetch_assoc($film_res);
                 }
                 ?>
+                </div>
 
                 <!-- <hr class="separator"> -->
                 

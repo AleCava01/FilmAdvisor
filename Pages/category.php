@@ -12,13 +12,19 @@
     $film = mysqli_fetch_assoc($movies);
     while($film){
         $response=$response."<div class='item'><div class='locandina_div div-".$film["id_f"]."' id='div-".$film["id_f"]."'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div></div>";
-        $response2=$response2."$('.div-".$film["id_f"]."').hover(function(){
+        $response2=$response2."$('div.div-".$film["id_f"]."').hover(function(){
             $('#div-".$film["id_f"]."-desc').css('display', 'block');
             $(this).css('transform','scale(1.2)');
             }, function(){
             $(this).css('transform','scale(1)');
             $('#div-".$film["id_f"]."-desc').css('display', 'none');
-            });";
+            });
+            $('div.div-".$film["id_f"]."-desc').hover(function(){
+                $('#div-".$film["id_f"]."-desc').css('display', 'block');
+                }, function(){
+                $('#div-".$film["id_f"]."-desc').css('display', 'none');
+                });
+            ";
         $film = mysqli_fetch_assoc($movies);
     }
     $response=$response."</div>".$response2;
