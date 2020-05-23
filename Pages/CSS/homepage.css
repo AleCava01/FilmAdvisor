@@ -88,6 +88,8 @@ img{
 .film-info-div{
     display: none;
     height:100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
     /* -webkit-background-size: cover;
     -moz-background-size:  cover;
     -o-background-size: cover; */
@@ -154,7 +156,6 @@ img{
 }
 
 
-
 @media only screen and (max-width: 990px) { /*collapse*/
     .category-outer-div{
         display: flex;
@@ -162,7 +163,6 @@ img{
         justify-content: center;
         background-color: transparent;
         border-radius: 10px;
-    
     }
     .category-title-h5{
         text-align: center;
@@ -184,6 +184,9 @@ img{
         color:white;
         padding:5px;
     }
+    .hidden-sm{
+        display: none;
+    }
     
 }
 
@@ -194,6 +197,7 @@ img{
         color:white;
         padding:15px;
     }
+    
 }
 @media only screen and (max-width: 1280px) { /*720p*/
     .film-info-title{
@@ -202,5 +206,26 @@ img{
         color:white;
         padding:10px;
     }
-    
+    .category-title-h5{
+        font-size: 15px;
+    }
+    .film-info-semi-title-top{
+        font-size: 15px;
+    }
+    .film-info-semi-title{
+        font-size: 15px;
+    }
+    .film-info-desc-p{
+        font-size: 12px;
+    }
+    .film-info-img{
+        width:70%;
+    }
+    .film-info-div{
+        display: none;
+        height:90%;
+        /* -webkit-background-size: cover;
+        -moz-background-size:  cover;
+        -o-background-size: cover; */
+    }
 }

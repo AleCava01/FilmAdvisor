@@ -17,17 +17,26 @@
         include "navbar_search.php";
         include "logcontrol.php";
         $search_title = $_POST["title"];
-
         ?>
         <div class="container-fluid" style="margin:0">
             <br>
-            <h5 class="h5-title">Risultati ricerca</h5>
+            <h3 class="h5-title">Risultati ricerca</h3>
             <?php
-            $movies = $conn -> query("SELECT * FROM film WHERE titolo LIKE '%".$search_title."%'");
-            $film = mysqli_fetch_assoc($movies);
-            while($film){
-                echo("<div class='locandina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div>");
+
+            if($search_title!=""){
+                $movies = $conn -> query("SELECT * FROM film WHERE titolo LIKE '%".$search_title."%'") or die("<h5 class='h5-title'>Non è stato trovato alcun film corrispondente ai parametri di ricerca</h5>");
+               
                 $film = mysqli_fetch_assoc($movies);
+                if($film["titolo"]==""){
+                    echo("<h5 class='h5-title'>Non è stato trovato alcun film corrispondente ai parametri di ricerca</h5>");
+                }
+                while($film){
+                    echo("<div class='locandina_div'><a href='"."video_buffer.php?id_f=".$film["id_f"]."'><img class='locandina_img' src='".$film["locandina"]."'></a></div>");
+                    $film = mysqli_fetch_assoc($movies);
+                }
+            }
+            else{
+                echo("<h5 class='h5-title'>Non è stato trovato alcun film corrispondente ai parametri di ricerca</h5>");
             }
             ?>
         </div>

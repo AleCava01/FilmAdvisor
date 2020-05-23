@@ -2,3 +2,44 @@
     background-color: rgba(8, 8, 8);
 
   }
+.search{
+  background-color: black;
+  transition:0.3s;
+  color:white;
+
+}
+.search:focus{
+  background-color: black;
+  border: 1px solid white;
+  -moz-box-shadow: 0 0 5px #ccc;
+  -webkit-box-shadow: 0 0 5px #ccc;
+  box-shadow: 0 0 5px #ccc;
+  transition:0.3s;
+  color:white;
+
+}
+.btn-outline-secondary{
+  border-color:white;
+  width:50px;
+  height:38px;
+}
+.btn-outline-secondary:hover{
+  background-color: white;
+  color:black;
+}
+.dropdown-menu{
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.dropdown-item{
+  color:white;
+}
+.impostazioni-nav:hover{
+  background-color:rgba(255, 255, 255, 0.8);
+  color:black;
+
+}
+.exit-nav:hover{
+  background-color:rgba(255, 0, 0, 0.3);
+  color:white;
+
+}

@@ -22,7 +22,7 @@
         include "navbar_homepage.php";
 
         //get suggested Film IDs for the user via py script (?)
-        $IDs = array(1,5,7);
+        $IDs = array(1,5,9);
         $covers = array();
         $titles = array();
         $descriptions = array();
@@ -127,60 +127,55 @@
                 $film = mysqli_fetch_assoc($film_res);
                 while($film){
                     echo("<div class='div-".$film["id_f"]."-desc film-info-div' id='div-".$film["id_f"]."-desc' style='background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(".$film["copertina"]."); background-repeat:no-repeat;background-position: center center; background-size:cover;'>");
-                    echo("<div>");
+                    echo("<div style='position: sticky;top: 0px;'>");
                     echo("<h1 class='film-info-title'>".$film["titolo"]."</h1>");
                     echo("<hr class='separator'>");
                     echo("</div>");
 
                     echo("<div class='row' style='height:85%'>");
-                    echo("<div class='col-5'>");
+                    echo("<div class='col-md-9 col-sm-12'>");
                     echo("<h4 class='film-info-semi-title-top'>Descrizione</h4>");
-                    echo("<p class='film-info-desc-p'>".$film["descrizione"]."</p>");
+                    echo("<p class='film-info-desc-p'>".$film["descrizione"]."</p>"); 
                     echo("<h4 class='film-info-semi-title'>Regista</h4>");
-                    echo("<p class='film-info-reg-p'>".$film["regista"]."</p>");
+                    $registi = $conn -> query("SELECT a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'regista';");
+                    $regista = mysqli_fetch_assoc($registi);
+                    while($regista){
+                        echo("<p class='film-info-desc-p' style='margin-top:0;margin-bottom:0;'>".$regista["nome"]." ".$regista["cognome"]."</p>");
+                        $regista = mysqli_fetch_assoc($registi);
+                    }
+                    echo("<h4 class='film-info-semi-title'>Attori principali</h4>");
+                    $attori = $conn -> query("SELECT a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'attore';");
+                    $attore = mysqli_fetch_assoc($attori);
+                    while($attore){
+                        echo("<p class='film-info-desc-p' style='margin-top:0;margin-bottom:0;'>".$attore["nome"]." ".$attore["cognome"]."</p>");
+                        $attore = mysqli_fetch_assoc($attori);
+                    }
                     echo("<h4 class='film-info-semi-title'>Durata</h4>");
-                    echo("<p class='film-info-reg-p'>".(int)((int)$film["durata"]/60)." ore e ".((int)$film["durata"]%60)." minuti</p>");
+                    echo("<p class='film-info-desc-p'>".(int)((int)$film["durata"]/60)." ore e ".((int)$film["durata"]%60)." minuti</p>");
                     echo("<a href='video_buffer.php?id_f=".$film["id_f"]."' class='btn btn-secondary' style='width:10%; background-color:white; color:black'>Play</a>");
+                    echo("<button onclick='load_trailer(".$film["id_f"].")' type='button' class='btn btn-danger' data-toggle='modal' data-target='#modal-".$film["id_f"]."'>Trailer</button>");
                     echo("</div>");
-                    echo("<div class='col-4'>");
-                    echo("<h4 class='film-info-semi-title-top'>Trailer</h4>");
-
-                    echo("<video
-                    id='my-video'
-                    class='video-js vjs-theme-city'
-                    controls
-                    preload='auto'
-                    width='700'
-                    height='393'
-                    poster='Images/trailer.png'
-                    data-setup='{}'
-                  >
-                    <source src='".$film["trailer_URI"]."' type='video/mp4' />
-                    <source src='".$film["trailer_URI"]."' type='video/webm' />
-                    <p class='vjs-no-js'>
-                      To view this video please enable JavaScript, and consider upgrading to a
-                      web browser that
-                      <a href='https://videojs.com/html5-video-support/' target='_blank'
-                        >supports HTML5 video</a
-                      >
-                    </p>
-                  </video>");
-                    echo("</div>");
-                    echo("<div class='col-3'>");
+                    echo("<div class='col-md-3 hidden-sm'>");
                     echo("<div class='locandina-info-wrapper'>");
                     echo("<img class='film-info-img align-middle' src='".$film["locandina"]."'>");
                     echo("</div>");
                     echo("</div>");
                     echo("</div>");
                     echo("</div>");
-
+                    echo("<div id='modal-".$film["id_f"]."' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true'>
+                    <div class='modal-dialog modal-xl'>
+                      <div class='modal-content'>
+                        <div id='selectedtrailer-".$film["id_f"]."'></div>
+                      </div>
+                    </div>
+                  </div>");
                     $film = mysqli_fetch_assoc($film_res);
                 }
                 ?>
                 </div>
 
                 <!-- <hr class="separator"> -->
-                
+               
             </div>
                 
         </div>
@@ -193,14 +188,48 @@
             <script src="OwlCarousel/dist/owl.carousel.min.js"></script>
             <script src="Scripts/owl-carousels.js"></script>        
             <script src="Scripts/category-toggler.js"></script>
+
             <script>
             doAll();
             window.addEventListener('hashchange', function() {
                 doAll();
             }, false);
             
-            if (!sessionStorage.getItem("is_reloaded")) window.location.hash = "";;
+            if (!sessionStorage.getItem("is_reloaded")){
+                if(window.location.hash.substring(1) != "allMovies"){
+                    window.location.hash = "";
+                }
+            }
 
+            $('.modal').on('hidden.bs.modal', function () {                
+                document.getElementById("selectedtrailer-"+mex).innerHTML = "";
+
+            });
+
+
+            function handleTrailerData(data,mex){
+                console.log(data);
+                console.log("worked");
+                document.getElementById("selectedtrailer-"+mex).innerHTML = data;
+                
+            }
+            function sendAjaxTrailer(mex, handleTrailerData) {  
+                console.log("sent");
+                $.ajax({
+                    url: 'trailer.php',
+                    type: 'POST',
+                    data: {
+                        id_f: mex,
+                    },  
+                    success:function(data1) {
+                        handleTrailerData(data1,mex); 
+                    }
+                });
+            }
+
+            function load_trailer(id){                
+                sendAjaxTrailer(id,handleTrailerData);
+            }
             </script>
             
     </body>

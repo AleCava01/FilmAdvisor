@@ -19,7 +19,7 @@
         <div class="container-fluid container-modified">
             <?php
             $dati_utente = mysqli_fetch_assoc($conn -> query("SELECT * FROM utente WHERE id_u=".$id_u.";"));
-            echo("<div class='title'><h5>Ciao ".$dati_utente["nome"].",<br> controlla o modifica i dati del tuo account</h5></div>");
+            echo("<div class='title'><h4>Ciao ".$dati_utente["nome"].",<br> controlla o modifica i dati del tuo account</h4></div>");
             echo("<br>");
             echo("<div class='semi-title'><h6 class='semi-title-h6'>Profilo</h6></div>");
             echo("<hr>");

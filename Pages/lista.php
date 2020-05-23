@@ -19,7 +19,8 @@
         ?>
         <div class="container-fluid" style="margin:0">
             <br>
-            <h5 class="h5-title">La mia lista</h5>
+            <h4 class="h5-title">La mia lista</h4>
+            <div class="wrapper">
             <?php
             $movies = $conn -> query("SELECT * FROM film AS f, lista AS l WHERE f.id_f=l.id_f AND id_u=".$id_u.";");
             $film = mysqli_fetch_assoc($movies);
@@ -28,6 +29,7 @@
                 $film = mysqli_fetch_assoc($movies);
             }
             ?>
+            </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>

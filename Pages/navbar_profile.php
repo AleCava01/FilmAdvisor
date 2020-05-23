@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="CSS/navbar2.css">
+<link rel="stylesheet" href="fontawesome/css/all.css">
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <a class="nav-link navbar-brand active" href="homepage.php"><img src="Images/logo.png" width="120px"></a>    
@@ -22,16 +23,16 @@
                 Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item " href="#">Impostazioni</a>
+                    <a class="dropdown-item impostazioni-nav" href="#">Impostazioni</a>
                     <div class="dropdown-divider">
                     </div>
-                    <a class="dropdown-item" href="logout.php">Esci</a>
+                    <a class="dropdown-item exit-nav" href="logout.php">Esci</a>
                 </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="POST" action="search_result.php">
-        <input name="title" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input  name="title" type="search" class="form-control mr-sm-2 search"  placeholder="Cerca per titolo o regista">
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" ><i class="fas fa-search"></i></button>
         </form>
     </div>
 </nav>

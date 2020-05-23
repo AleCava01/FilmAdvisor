@@ -28,10 +28,31 @@ session_write_close();
     <link href="https://unpkg.com/video.js@7/dist/video-js.min.css"rel="stylesheet"/>
 
     <style>
-        .back{
-            align:center;
-            margin-top:80px;
+        a.button1{
+            display:inline-block;
+            padding:0.35em 1.2em;
+            margin:0 0.3em 0.3em 0;
+            margin-top:70px;
+            border: 1px solid rgb(255,255,255,0.8);
+            border-radius:0.12em;
+            box-sizing: border-box;
+            text-decoration:none;
+            font-weight:500;
+            color:rgb(255,255,255,0.8);
+            text-align:center;
+            transition: all 0.2s;
         }
+        a.button1:hover{
+        color:black;
+        background-color:rgb(255,255,255,0.9);
+        }
+        @media all and (max-width:30em){
+        a.button1{
+            display:block;
+            margin:0.4em auto;
+        }
+        }
+       
        video{
            
            outline:none;
@@ -160,7 +181,8 @@ session_write_close();
 
             </div>
             <div style="text-align:center;">
-            <a href="homepage.php" class="btn btn-primary back">Torna a FilmAdvisor</a>
+            <a href="homepage.php" class="button1">Torna a FilmAdvisor</a>
+
             </div>
         </div>
     </div>
