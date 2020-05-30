@@ -192,7 +192,7 @@
                 setHeights: true,
                 overflowScroll: true,
                 updateHash: false,
-                touchScroll: true
+                touchScroll: true,
                 });
             });
             </script>

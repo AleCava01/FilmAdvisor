@@ -18,9 +18,11 @@ function submit(){
         xhr.onload = function(){
             const serverResponse = document.getElementById("serverResponse");
             if(this.responseText == "success"){
-                //location.href = "homepage.php";
+                location.href = "benvenuto.html";
             }
-            serverResponse.innerHTML = this.responseText;
+            else{
+                serverResponse.innerHTML = this.responseText;
+            }
         };
         xhr.open("POST","register.php");
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
