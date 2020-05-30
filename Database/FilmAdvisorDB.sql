@@ -4,19 +4,19 @@ use FilmAdvisor;
 
 create table utente(
     id_u int not null auto_increment primary key,
-    username varchar(65535) not null,
-    password varchar(65535) not null,
-    email varchar(65535) not null,
-    nome varchar(65535) not null,
-    cognome varchar(65535) not null,
+    username text not null,
+    password text not null,
+    email text not null,
+    nome text not null,
+    cognome text not null,
     datanascita date not null,
     sesso int not null,
-    via varchar(65535) not null,
-    civico varchar(65535) not null,
-    citta varchar(65535) not null,
-    provincia varchar(65535) not null,
+    via text not null,
+    civico text not null,
+    citta text not null,
+    provincia text not null,
     cap int not null,
-    immagine varchar(65535) not null
+    immagine text not null
 )engine innodb;
 
 create table abbonamento(
@@ -32,12 +32,12 @@ create table abbonamento(
 
 create table film(
     id_f int not null auto_increment primary key,
-    titolo varchar(65535) not null,
-    descrizione varchar(65535) not null,
-    locandina varchar(65535) not null,
-    copertina varchar(65535) not null,
-    URI varchar(65535) not null,
-    trailer_URI varchar(65535) not null,
+    titolo text not null,
+    descrizione text not null,
+    locandina text not null,
+    copertina text not null,
+    URI text not null,
+    trailer_URI text not null,
     durata int not null,
     inserimento date not null,
     dataUscita date not null
@@ -60,7 +60,7 @@ create table feedback(
 
 create table genere(
     id_g int not null auto_increment primary key,
-    nome varchar(65535) not null
+    nome text not null
 )engine innodb;
 
 create table filmgenere(
@@ -72,11 +72,11 @@ create table filmgenere(
 
 create table artista(
     id_ar int not null auto_increment primary key,
-    ruolo varchar(65535) not null,
-    nome varchar(65535) not null,
-    cognome varchar(65535) not null,
-    biografia varchar(65535) not null,
-    immagine varchar(65535) not null
+    ruolo text not null,
+    nome text not null,
+    cognome text not null,
+    biografia text not null,
+    immagine text not null
 )engine innodb;
 
 create table filmartista(

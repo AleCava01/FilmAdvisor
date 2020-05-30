@@ -10,7 +10,7 @@
         <link href='https://vjs.zencdn.net/7.7.6/video-js.css' rel='stylesheet' />
         <script src='https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js'></script>
         <link href='https://unpkg.com/video.js@7/dist/video-js.min.css'rel='stylesheet'/>
-
+        
 
     </head>
     <?php
@@ -30,60 +30,7 @@
             $descriptions[] = $cover_result["descrizione"];
         }
         ?>
-    <body data-spy="scroll" data-target=".navbar" data-offset="70">
-        <div id="suggested" class="container-fluid scrollme" style="margin:0; width:100%;height: 100%;">
-            <div style="height: calc(100% - 55px);">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                    </ol>
-
-                
-                    <div class="carousel-inner mh-100">
-                        <div class="carousel-item active">
-                                <?php
-                                echo("<a href='video_buffer.php?id_f=".$IDs[0]."'>");
-                                echo("<img src='".$covers[0]."' class='d-block w-100 img-custom' alt='...'>");
-                                ?>
-
-                                <div class="carousel-caption w-100" style="left:0; bottom:0">
-                                    <?php
-                                    echo("<h5>".$titles[0]."</h5>");
-                                    echo("<p>".$descriptions[0]."</p>");
-                                    ?> 
-                                </div>
-                                </a>
-                        </div>
-                
-                        <?php
-                        for($i=1; $i<count($IDs); $i++){
-                            echo("<div class='carousel-item'>");
-                            echo("<a href='video_buffer.php?id_f=".$IDs[$i]."'>");
-                            echo("<img src=".$covers[$i]." class='d-block w-100 img-custom' alt='...'>");
-                            echo("<div class='carousel-caption w-100' style='left:0; bottom:0'>");
-                            echo("<h5>".$titles[$i]."</h5>");
-                            echo("<p>".$descriptions[$i]."</p></div></a></div>");
-                        }
-                        ?>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-            
-
-        </div>
-        </div>
-        <div id="allMovies" class="container-fluid" style="min-height: 55px;"></div>
+    <body>
 
         <div id="moviesContainer" class="container-fluid scrollme" style="height: 95%;display: flex; flex-direction: column;">
                 
@@ -180,25 +127,9 @@
                 
         </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="Scrollify/jquery.scrollify.js" type="text/javascript"></script>
-            <script>
-            $(function() {
-                $.scrollify({
-                section : ".scrollme",
-                scrollbars: true,
-                standardScrollElements: ".owl-carousel",
-                offset:-45,
-                setHeights: true,
-                overflowScroll: true,
-                updateHash: false,
-                touchScroll: true,
-                });
-            });
-            </script>
             <script src="bootstrap/js/bootstrap.min.js"></script>
             <script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
             <script src="jquery-mousewheel/jquery.mousewheel.min.js"></script>
-            <script>var scroll = new SmoothScroll('a[href*="#"]');</script>
             <script src='https://vjs.zencdn.net/7.7.6/video.js'></script>
             <script src="OwlCarousel/dist/owl.carousel.min.js"></script>
             <script src="Scripts/owl-carousels.js"></script>        
@@ -206,6 +137,7 @@
 
             <script>
             doAll();
+            
             window.addEventListener('hashchange', function() {
                 document.getElementById("selected-category").innerHTML="<img src='Images/loading.gif' width='70' height='70' style='margin-top:30px'>";
                 $('.film-info-div').css('display', 'none');
