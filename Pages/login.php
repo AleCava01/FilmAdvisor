@@ -8,6 +8,7 @@ if(password_verify($password, mysqli_fetch_array($conn->query("SELECT password F
     session_start();
     $_SESSION['username'] = $username;
     $_SESSION['id_u'] = mysqli_fetch_array($conn->query("SELECT id_u FROM utente WHERE username LIKE '".$username."';"))["id_u"];
+    
     exit;
 }
 else{

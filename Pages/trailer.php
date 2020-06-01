@@ -9,9 +9,10 @@ $trailer = mysqli_fetch_assoc($conn -> query("SELECT trailer_URI FROM film WHERE
    controls
    preload='auto'
    poster='Images/trailer.png'
-   data-setup='{}'
-   fluid='true'
-   
+   data-setup='{}' 
+   width='1080'
+   height='720'
+   autoplay='ture'
    >
    <source src='".$trailer."' type='video/mp4' />
    <p class='vjs-no-js'>

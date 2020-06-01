@@ -1,8 +1,8 @@
 
 <?php
 session_start();
-if(!isset($_SESSION['id_u'])){
-    header("location: catalogo.php");
+if(isset($_SESSION['id_u'])){
+    header("location: homepage.php");
 }
 else{
     echo("
@@ -18,24 +18,13 @@ else{
         <div class='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul class='navbar-nav mr-auto'>
                 <li class='nav-item'>
-                    <a class='nav-link active' href='#suggested'>Consigliati per te</a>
+                    <a class='nav-link' href='catalogo.php'>Catalogo</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link' href='#allMovies'>Tutti i film</a>
+                    <a class='nav-link' href='login.html'>Accedi</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link' href='lista.php'>La mia lista</a>
-                </li>
-                <li class='nav-item dropdown'>
-                    <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                    Account
-                    </a>
-                    <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                        <a class='dropdown-item impostazioni-nav' href='profile.php'>Impostazioni</a>
-                        <div class='dropdown-divider'>
-                        </div>
-                        <a class='dropdown-item exit-nav' href='logout.php'>Esci</a>
-                    </div>
+                    <a class='nav-link' href='register.html'>Registrati</a>
                 </li>
                 
             </ul>

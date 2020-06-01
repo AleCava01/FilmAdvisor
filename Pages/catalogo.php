@@ -15,7 +15,7 @@
     </head>
     <?php
         include "DBsettings.php";
-        include "navbar_homepage.php";
+        include "navbar_catalogo.php";
 
         //get suggested Film IDs for the user via py script (?)
         $IDs = array(1,5,9);
@@ -99,8 +99,6 @@
                     }
                     echo("<h4 class='film-info-semi-title'>Durata</h4>");
                     echo("<p class='film-info-desc-p'>".(int)((int)$film["durata"]/60)." ore e ".((int)$film["durata"]%60)." minuti</p>");
-                    echo("<a href='video_buffer.php?id_f=".$film["id_f"]."' class='btn btn-secondary' style='width:10%; background-color:white; color:black'>Play</a>");
-                    echo("<button onclick='load_trailer(".$film["id_f"].")' type='button' class='btn btn-danger' data-toggle='modal' data-target='#modal-".$film["id_f"]."'>Trailer</button>");
                     echo("</div>");
                     echo("<div class='col-md-3 hidden-sm'>");
                     echo("<div class='locandina-info-wrapper'>");
@@ -109,13 +107,7 @@
                     echo("</div>");
                     echo("</div>");
                     echo("</div>");
-                    echo("<div id='modal-".$film["id_f"]."' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true'>
-                    <div class='modal-dialog modal-xl'>
-                      <div class='modal-content'>
-                        <div id='selectedtrailer-".$film["id_f"]."'></div>
-                      </div>
-                    </div>
-                  </div>");
+                    
                     $film = mysqli_fetch_assoc($film_res);
                 }
                 ?>
@@ -157,10 +149,7 @@
                 }
             }
 
-            $('.modal').on('hidden.bs.modal', function () {                
-                document.getElementById("selectedtrailer-"+mex).innerHTML = "";
-
-            });
+            
 
 
             function handleTrailerData(data,mex){
@@ -168,6 +157,9 @@
                 console.log("worked");
                 document.getElementById("selectedtrailer-"+mex).innerHTML = data;
                 
+                $('.modal').on('hidden.bs.modal', function () {  
+                    document.getElementById("selectedtrailer-"+mex).innerHTML = "";
+                });
             }
             function sendAjaxTrailer(mex, handleTrailerData) {  
                 console.log("sent");

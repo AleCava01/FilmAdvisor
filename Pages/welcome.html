@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="icon" href="Images/icon.png">
+    <link rel="stylesheet" href="CSS/welcome.css">
+
+
+    <title>FilmAdvisor</title>
+</head>
+<body>
+    <div class="container-fluid scrollme">
+        <img src='Images/logo.png' width='180px' class="logo">
+        <br>
+        <h1 class="title">Voglia di film?</h1>
+        <h3 class="sub-title">Scegline uno dal nostro <a href="catalogo.php">catalogo</a> oppure lasciati consigliare da noi</h3>
+        <div class="centered">
+            <a class="btn" href="register.html">Registrati</a>
+        </div>
+        <div class="centered">
+            <h5 class="info centered">Vuoi saperne di più?</h5>
+
+            <div class="container">
+                
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+
+                <span class="text">
+                    Scroll down</span>
+            </div>
+        </div>
+        
+    </div>
+    <div class="scrollme">
+        
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="Scrollify/jquery.scrollify.js" type="text/javascript"></script>
+<script>
+$(function() {
+    $.scrollify({
+    section : ".scrollme",
+    scrollbars: true,
+    standardScrollElements: "",
+    setHeights: true,
+    overflowScroll: true,
+    updateHash: false,
+    touchScroll: true,
+    });
+});
+</script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="smooth-scroll-master/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script>var scroll = new SmoothScroll('a[href*="#"]');</script>
+
+</html>

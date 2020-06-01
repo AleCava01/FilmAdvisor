@@ -163,9 +163,9 @@
                     echo("</div>");
                     echo("</div>");
                     echo("<div id='modal-".$film["id_f"]."' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel' aria-hidden='true'>
-                    <div class='modal-dialog modal-xl'>
-                      <div class='modal-content'>
-                        <div id='selectedtrailer-".$film["id_f"]."'></div>
+                    <div class='modal-dialog modal-xl' id='trailer-modal-dialog'>
+                      <div class='modal-content' id='trailer-modal-content' style='background-color:black; text-align:center'>
+                        <div id='selectedtrailer-".$film["id_f"]."' style='text-align:center; width:100%;'></div>
                       </div>
                     </div>
                   </div>");
@@ -225,16 +225,30 @@
                 }
             }
 
-            $('.modal').on('hidden.bs.modal', function () {                
-                document.getElementById("selectedtrailer-"+mex).innerHTML = "";
-
-            });
-
+            
 
             function handleTrailerData(data,mex){
                 console.log(data);
                 console.log("worked");
                 document.getElementById("selectedtrailer-"+mex).innerHTML = data;
+                var vw = Math.max(window.innerWidth)/1.347;
+                var vh = Math.max(window.innerHeight)/2;
+                if(vw>1140){
+                    vw=1140;
+                }
+                console.log(vw);
+                console.log(vh);
+                document.getElementById("my-video").setAttribute("width",vw);
+                document.getElementById("my-video").setAttribute("height",""+vh);
+                document.getElementById("my-video").style.width = vw;
+                document.getElementById("my-video").style.height = vh;
+                document.getElementById("selectedtrailer-"+mex).style.width = vw;
+                document.getElementById("selectedtrailer-"+mex).style.height = vh;
+
+                $('.modal').on('hidden.bs.modal', function () {                
+                    document.getElementById("selectedtrailer-"+mex).innerHTML = "";
+                });
+
                 
             }
             function sendAjaxTrailer(mex, handleTrailerData) {  
