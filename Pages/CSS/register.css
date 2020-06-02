@@ -18,6 +18,16 @@ body{
     
 
 }
+.btn{
+    width:10vw;
+    margin-top: 10px;
+    border:1px solid white;
+    color:white;
+}
+.btn:hover{
+    color:black;
+    background-color: white;
+}
 .input-group-prepend{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -29,16 +39,34 @@ body{
 }
 .centered{
     width: 30vw;
-
     position:absolute;
     top: 50%;
     left:50%;
     transform: translate(-50%,-50%);
 
 }
+/* not active */
+
+
+/* active (faded) */
+
+.nav-link{
+    color:white;
+}
+.active{
+    border-bottom: 1px solid currentColor;
+
+}
+
 .btn{
     width:10vw;
     margin-top: 10px;
+    border:1px solid white;
+    color:white;
+}
+.btn:hover{
+    color:black;
+    background-color: white;
 }
 label{
     color:white;

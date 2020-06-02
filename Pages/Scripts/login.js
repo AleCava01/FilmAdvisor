@@ -25,10 +25,12 @@ function submit(){
         xhr.onload = function(){
             const serverResponse = document.getElementById("serverResponse");
             if(this.responseText=="authorized"){
-                document.getElementById("serverResponse").style.color = "white";
                 location.href="homepage.php";
             }
-            serverResponse.innerHTML = this.responseText;
+            else{
+                serverResponse.innerHTML = this.responseText;
+
+            }
         };
         xhr.open("POST","login.php");
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

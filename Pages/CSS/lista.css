@@ -34,15 +34,21 @@ body{
 }
 
   
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 650px) {
     .locandina_img{
-        height:20vw;
-        width: 14vw;
+        height:40vw;
+        width: 28vw;
         transition:0.3s;
     
+    }
+    body{
+        overflow: scroll;
     }
     .locandina_div{
         padding: 1.5vw;
         display: inline-flex;
+    }
+    .locandina_div{
+        display: block;
     }
 }

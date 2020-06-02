@@ -10,9 +10,18 @@
         <link href='https://vjs.zencdn.net/7.7.6/video-js.css' rel='stylesheet' />
         <script src='https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js'></script>
         <link href='https://unpkg.com/video.js@7/dist/video-js.min.css'rel='stylesheet'/>
-        
+        <link rel="stylesheet" type="text/css" href="CSS/loader.css">
+
 
     </head>
+    <div class="loader-wrapper">
+        <div style="position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);">
+        <div class="lds-1"><div></div><div></div><div></div></div>
+        </div>
+    </div>
     <?php
         include "DBsettings.php";
         include "navbar_catalogo.php";
@@ -30,7 +39,7 @@
             $descriptions[] = $cover_result["descrizione"];
         }
         ?>
-    <body>
+    <body style="background-color:black;">
 
         <div id="moviesContainer" class="container-fluid scrollme" style="height: 95%;display: flex; flex-direction: column;">
                 
@@ -128,6 +137,9 @@
             <script src="Scripts/category-toggler.js"></script>
 
             <script>
+            $(window).on("load", function(){
+            $(".loader-wrapper").fadeOut("slow");
+            })
             doAll();
             
             window.addEventListener('hashchange', function() {
@@ -152,32 +164,7 @@
             
 
 
-            function handleTrailerData(data,mex){
-                console.log(data);
-                console.log("worked");
-                document.getElementById("selectedtrailer-"+mex).innerHTML = data;
-                
-                $('.modal').on('hidden.bs.modal', function () {  
-                    document.getElementById("selectedtrailer-"+mex).innerHTML = "";
-                });
-            }
-            function sendAjaxTrailer(mex, handleTrailerData) {  
-                console.log("sent");
-                $.ajax({
-                    url: 'trailer.php',
-                    type: 'POST',
-                    data: {
-                        id_f: mex,
-                    },  
-                    success:function(data1) {
-                        handleTrailerData(data1,mex); 
-                    }
-                });
-            }
-
-            function load_trailer(id){                
-                sendAjaxTrailer(id,handleTrailerData);
-            }
+         
             </script>
             
     </body>

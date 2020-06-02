@@ -1,22 +1,26 @@
 <html>
+    
     <head>
-        <link rel="stylesheet" type="text/css" href="CSS/homepage.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/allfilm.css">
         <link rel="icon" href="Images/icon.png">
         <link rel="stylesheet" href="OwlCarousel/dist/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="OwlCarousel/dist/assets/owl.theme.default.min.css">
-        <link href='https://vjs.zencdn.net/7.7.6/video-js.css' rel='stylesheet' />
+        <link rel="stylesheet" href="fontawesome/css/all.css">
+        <link href='https://vjs.zencdn.net/7.7.6/video-js.css' rel='stylesheet'/>
         <script src='https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js'></script>
         <link href='https://unpkg.com/video.js@7/dist/video-js.min.css'rel='stylesheet'/>
+        <link rel="stylesheet" type="text/css" href="CSS/homepage.css">
+        <link rel="stylesheet" type="text/css" href="CSS/loader.css">
 
 
     </head>
+
     <?php
         include "DBsettings.php";
         include "navbar_homepage.php";
-
+        
         //get suggested Film IDs for the user via py script (?)
         $IDs = array(1,5,9);
         $covers = array();
@@ -29,8 +33,17 @@
             $titles[] = $cover_result["titolo"];
             $descriptions[] = $cover_result["descrizione"];
         }
-        ?>
-    <body data-spy="scroll" data-target=".navbar" data-offset="70">
+    ?>
+    <div class="loader-wrapper">
+        <div style="position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);">
+        <div class="lds-1"><div></div><div></div><div></div></div>
+        </div>
+    </div>
+    <body data-spy="scroll" data-target=".navbar" data-offset="70" style="background-color:black;">
+    
         <div id="suggested" class="container-fluid scrollme" style="margin:0; width:100%;height: 100%;">
             <div style="height: calc(100% - 55px);">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -134,26 +147,39 @@
 
                     echo("<div class='row' style='height:85%'>");
                     echo("<div class='col-md-9 col-sm-12'>");
-                    echo("<h4 class='film-info-semi-title-top'>Descrizione</h4>");
-                    echo("<p class='film-info-desc-p'>".$film["descrizione"]."</p>"); 
+                    echo("<h4 class='film-info-semi-title-top'>Descrizione <button style='background-color:transparent; border:none; outline:none; color:white' onclick='toggle_info_".$film["id_f"]."();'><i id='desc-icon-".$film["id_f"]."' class='fas fa-angle-up'></i></button></h4>");
+                    echo("<script>
+                    
+                    function toggle_info_".$film["id_f"]."() {
+                        var x = document.getElementById('desc-".$film["id_f"]."');
+                        if (x.style.display === 'none') {
+                        x.style.display = 'block';
+                        document.getElementById('desc-icon-".$film["id_f"]."').className = 'fas fa-angle-up';
+                        } else {
+                        x.style.display = 'none';
+                        document.getElementById('desc-icon-".$film["id_f"]."').className = 'fas fa-angle-down';
+
+                        }
+                    }</script>");
+                    echo("<p id='desc-".$film["id_f"]."' class='film-info-desc-p'>".$film["descrizione"]."</p>"); 
                     echo("<h4 class='film-info-semi-title'>Regista</h4>");
-                    $registi = $conn -> query("SELECT a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'regista';");
+                    $registi = $conn -> query("SELECT a.id_ar,a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'regista';");
                     $regista = mysqli_fetch_assoc($registi);
                     while($regista){
-                        echo("<p class='film-info-desc-p' style='margin-top:0;margin-bottom:0;'>".$regista["nome"]." ".$regista["cognome"]."</p>");
+                        echo("<a class='film-info-desc-p' style='margin-top:0;margin-bottom:0;' href='artista.php?id_ar=".$regista["id_ar"]."'>".$regista["nome"]." ".$regista["cognome"]."</a>");
                         $regista = mysqli_fetch_assoc($registi);
                     }
                     echo("<h4 class='film-info-semi-title'>Attori principali</h4>");
-                    $attori = $conn -> query("SELECT a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'attore';");
+                    $attori = $conn -> query("SELECT a.id_ar,a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'attore';");
                     $attore = mysqli_fetch_assoc($attori);
                     while($attore){
-                        echo("<p class='film-info-desc-p' style='margin-top:0;margin-bottom:0;'>".$attore["nome"]." ".$attore["cognome"]."</p>");
+                        echo("<a class='film-info-desc-p' style='margin-top:0;margin-bottom:0;' href='artista.php?id_ar=".$attore["id_ar"]."'>".$attore["nome"]." ".$attore["cognome"]."</a>");
                         $attore = mysqli_fetch_assoc($attori);
                     }
                     echo("<h4 class='film-info-semi-title'>Durata</h4>");
                     echo("<p class='film-info-desc-p'>".(int)((int)$film["durata"]/60)." ore e ".((int)$film["durata"]%60)." minuti</p>");
-                    echo("<a href='video_buffer.php?id_f=".$film["id_f"]."' class='btn btn-secondary' style='width:10%; background-color:white; color:black'>Play</a>");
-                    echo("<button onclick='load_trailer(".$film["id_f"].")' type='button' class='btn btn-danger' data-toggle='modal' data-target='#modal-".$film["id_f"]."'>Trailer</button>");
+                    echo("<a href='video_buffer.php?id_f=".$film["id_f"]."' class='btn' style='margin-right:10px; font-weight: 700; font-size:20px;'>Play</a>");
+                    echo("<button onclick='load_trailer(".$film["id_f"].")' type='button' class='btn' style='margin-right:10px; font-weight: 400; width:80px;' data-toggle='modal' data-target='#modal-".$film["id_f"]."'>Trailer</button>");
                     echo("</div>");
                     echo("<div class='col-md-3 hidden-sm'>");
                     echo("<div class='locandina-info-wrapper'>");
@@ -205,9 +231,12 @@
             <script src="Scripts/category-toggler.js"></script>
 
             <script>
+            $(window).on("load", function(){
+                $(".loader-wrapper").fadeOut("slow");
+            })
             doAll();
             window.addEventListener('hashchange', function() {
-                document.getElementById("selected-category").innerHTML="<img src='Images/loading.gif' width='70' height='70' style='margin-top:30px'>";
+                document.getElementById("selected-category").innerHTML="<div style='text-align:center;'><div class='lds-1'><div></div><div></div><div></div></div></div>";
                 $('.film-info-div').css('display', 'none');
 
                 var hash = window.location.hash.substring(1);

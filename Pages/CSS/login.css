@@ -1,0 +1,54 @@
+.centered{
+    width: 20vw;
+
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+}
+h1,h2,h3,h4,h5,h6, p, label{
+    color:white;
+}
+.btn{
+    width:10vw;
+    margin-top: 10px;
+    border:1px solid white;
+    color:white;
+}
+.btn:hover{
+    color:black;
+    background-color: white;
+}
+.title{
+    text-align: center;
+}
+.align-center{
+    text-align: center;
+}
+.input-group-text{
+    background-color: white;
+}
+.input-group-prepend .input-group-text{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border:none;
+}
+body{
+    overflow: hidden;
+}
+@media only screen and (max-width: 990px) { /*collapse*/
+    .centered{
+        width: 80vw;
+    
+        position:absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    
+    }
+    .btn{
+        width:80vw;
+        margin-top: 10px;
+    }
+}

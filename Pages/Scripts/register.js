@@ -18,7 +18,7 @@ function submit(){
         xhr.onload = function(){
             const serverResponse = document.getElementById("serverResponse");
             if(this.responseText == "success"){
-                location.href = "homepage.html";
+                location.href = "homepage.php";
             }
             else{
                 serverResponse.innerHTML = this.responseText;
