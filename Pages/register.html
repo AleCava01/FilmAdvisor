@@ -25,7 +25,7 @@ transform: translate(-50%,-50%);">
     <div style="color:white; margin-left:20px">
         <a class='nav-link navbar-brand' href='welcome.html'><i class='fas fa-arrow-left'></i></a>    
         <h3>Crea un account</h3>
-        <a href="homepage.php">Sei già registrato?</a>
+        <a href="login.html">Sei già registrato?</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -165,7 +165,7 @@ transform: translate(-50%,-50%);">
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="" id="TOScheck" onchange="validate_check()" required>
                       <label class="form-check-label" for="TOScheck">
-                        Ho letto e accetto i <a href="#" data-toggle="modal" data-target="#TOSmodal">Termini e Condizioni di utilizzo</a></label>
+                        Ho letto e accetto i <a href="#" data-toggle="modal" id="link-no-wheel" data-target="#TOSmodal">Termini e Condizioni di utilizzo</a></label>
                       <div class="invalid-feedback">
                         Devi accettare per poter continuare
                       </div>
@@ -299,9 +299,18 @@ transform: translate(-50%,-50%);">
       <script src="Scripts/register.js" type="text/javascript"></script>
       <script src="Scripts/password_toggler.js" type="text/javascript"></script>
       <script>
+          
         $(window).on("load", function(){
             $(".loader-wrapper").fadeOut("slow");
-        })
+        });
+        $("#link-no-wheel").on('click', function(e) { 
+        if(e.which == 2 ) {
+            e.preventDefault();
+        }
+        });
+        $('.nav-link').on('click', function(){
+            $('.navbar-collapse').collapse('hide');
+        });
         var password_input = document.getElementById("password_input");
         var email_input = document.getElementById("email_input");
         var username_input = document.getElementById("username_input");

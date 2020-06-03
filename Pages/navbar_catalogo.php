@@ -25,9 +25,7 @@ else{
             <ul class='nav navbar-nav navbar-center'>
                 <li class='nav-item'>
                     <a class='nav-link active'>Catalogo</a>
-                </li>
-                
-                
+                </li>                
             </ul>
         </div>
     </nav>

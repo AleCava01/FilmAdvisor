@@ -162,7 +162,9 @@ img{
     color:black;
     background-color: white;
 }
-
+.second-div{
+    height: 95%;display: flex; flex-direction: column;
+}
 
 
 @media only screen and (max-width: 990px) { /*collapse*/
@@ -201,7 +203,11 @@ img{
     }
     .container-fluid{
         text-align: center;
+        left:0;
     }
+    .second-div{
+    }
+    
     
 }
 

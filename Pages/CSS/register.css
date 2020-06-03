@@ -75,6 +75,7 @@ label{
     text-align: center;
     width: 100%;
 }
+
 @media only screen and (max-width: 990px) { /*collapse*/
     .centered{
         width: 80vw;
@@ -88,5 +89,9 @@ label{
     .btn{
         width:80vw;
         margin-top: 10px;
+    }
+    .flex-column{
+        background-color: rgba(0, 0, 0, 0.95);
+        border-radius: 10px;
     }
 }

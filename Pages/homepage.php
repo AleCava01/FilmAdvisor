@@ -96,9 +96,8 @@
 
         </div>
         </div>
-        <div id="allMovies" class="container-fluid" style="min-height: 55px;"></div>
 
-        <div id="moviesContainer" class="container-fluid scrollme" style="height: 95%;display: flex; flex-direction: column;">
+        <div id="allMovies" class="container-fluid scrollme second-div">
                 
                 <div class="owl-carousel owl-theme" id="category-carousel">
                     <?php
@@ -229,17 +228,23 @@
             <script src="OwlCarousel/dist/owl.carousel.min.js"></script>
             <script src="Scripts/owl-carousels.js"></script>        
             <script src="Scripts/category-toggler.js"></script>
-
+            <script>
+            $('.nav-link').on('click', function(){
+                $('.navbar-collapse').collapse('hide');
+            });
+            </script>
             <script>
             $(window).on("load", function(){
                 $(".loader-wrapper").fadeOut("slow");
             })
             doAll();
+           
             window.addEventListener('hashchange', function() {
                 document.getElementById("selected-category").innerHTML="<div style='text-align:center;'><div class='lds-1'><div></div><div></div><div></div></div></div>";
                 $('.film-info-div').css('display', 'none');
 
                 var hash = window.location.hash.substring(1);
+                
                 if(hash != "1" && hash != "2" && hash != "top" && hash != "suggested"){
                     setTimeout(function(){
                         doAll();

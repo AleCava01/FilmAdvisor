@@ -15,10 +15,7 @@
 
     </head>
     <div class="loader-wrapper">
-        <div style="position:absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);">
+        <div style="position:absolute;top: 50%;left:50%;transform: translate(-50%,-50%);">
         <div class="lds-1"><div></div><div></div><div></div></div>
         </div>
     </div>
@@ -143,7 +140,7 @@
             doAll();
             
             window.addEventListener('hashchange', function() {
-                document.getElementById("selected-category").innerHTML="<img src='Images/loading.gif' width='70' height='70' style='margin-top:30px'>";
+                document.getElementById("selected-category").innerHTML="<div style='text-align:center;'><div class='lds-1'><div></div><div></div><div></div></div></div>";
                 $('.film-info-div').css('display', 'none');
 
                 var hash = window.location.hash.substring(1);

@@ -17,6 +17,7 @@
         include "navbar_search.php";
         include "logcontrol.php";
         $search_title = $_POST["title"];
+        $search_title = strtoupper(str_replace(" ","",$search_title));
         ?>
         <div class="container-fluid" style="margin:0">
             <br>
@@ -24,10 +25,10 @@
             <?php
 
             if($search_title!=""){
-                $movies = $conn -> query("SELECT * FROM film WHERE titolo LIKE '%".$search_title."%'") or die("<h5 class='h5-title'>Non è stato trovato alcun film corrispondente ai parametri di ricerca</h5>");
+                $movies = $conn -> query("SELECT DISTINCT f.id_f, f.locandina FROM film as f, artista as a, filmartista as fa WHERE (f.id_f=fa.id_f AND a.id_ar=fa.id_ar AND f.titolo LIKE '%".$search_title."%') OR (f.id_f=fa.id_f AND a.id_ar=fa.id_ar AND UPPER(REPLACE(CONCAT(a.Nome,' ',a.Cognome), ' ', '')) LIKE '%".$search_title."%')") or die("<h5 class='h5-title'>Non è stato trovato alcun film corrispondente ai parametri di ricerca</h5>");
                
                 $film = mysqli_fetch_assoc($movies);
-                if($film["titolo"]==""){
+                if($film["id_f"]==""){
                     echo("<h5 class='h5-title'>Non è stato trovato alcun film corrispondente ai parametri di ricerca</h5>");
                 }
                 while($film){
