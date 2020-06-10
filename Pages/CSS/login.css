@@ -1,11 +1,18 @@
 .centered{
     width: 20vw;
-
     position:absolute;
     top: 50%;
     left:50%;
     transform: translate(-50%,-50%);
-
+}
+.wrapper-div{
+    width:100%;
+    height:100%;
+    background-image: url('Images/login/1.jpg'), linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+    background-blend-mode: overlay;
+    background-position: center;
+    background-size: cover; 
+    background-clip: border-box;
 }
 h1,h2,h3,h4,h5,h6, p, label{
     color:white;

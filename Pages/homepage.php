@@ -16,13 +16,13 @@
 
 
     </head>
-
+   
     <?php
         include "DBsettings.php";
         include "navbar_homepage.php";
         
         //get suggested Film IDs for the user via py script (?)
-        $IDs = array(1,5,9);
+        $IDs = array(10,5,9);
         $covers = array();
         $titles = array();
         $descriptions = array();
@@ -135,21 +135,28 @@
                 
                 <div style="height:100%; maring-top:10px;">
                 <?php
+                function num_to_month($mese){if($mese == 1){return "Gennaio";}if($mese == 2){return "Febbraio";}if($mese == 3){return "Marzo";}if($mese == 4){return "Aprile";}if($mese == 5){return "Maggio";}if($mese == 6){return "Giugno";}if($mese == 7){return "Luglio";}if($mese == 8){return "Agosto";}if($mese == 9){return "Settembre";}if($mese == 10){return "Ottobre";}if($mese == 11){return "Novembre";}if($mese == 12){return "Dicembre";}
+                }
                 $film_res = $conn -> query("SELECT * FROM film");
                 $film = mysqli_fetch_assoc($film_res);
                 while($film){
                     echo("<div class='div-".$film["id_f"]."-desc film-info-div' id='div-".$film["id_f"]."-desc' style='background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url(".$film["copertina"]."); background-repeat:no-repeat;background-position: center center; background-size:cover;'>");
                     echo("<div style='position: sticky;top: 0px;'>");
-                    echo("<h1 class='film-info-title'>".$film["titolo"]."</h1>");
+                    echo("<h1 class='film-info-title'>".$film["titolo"]."");
+                    echo("<br>");
+                    echo("<a href='coming_soon.html' class='btn' style='margin-right:10px; font-weight: 400; width:80px;'>Critica</a>");
+                    echo("<a href='video_buffer.php?id_f=".$film["id_f"]."' class='btn play'>Play</a>");
+                    echo("<button onclick='load_trailer(".$film["id_f"].")' type='button' class='btn' style='margin-right:10px; font-weight: 400; width:80px;' data-toggle='modal' data-target='#modal-".$film["id_f"]."'>Trailer</button>");
+                    echo("</h1>");
                     echo("<hr class='separator'>");
                     echo("</div>");
-
-                    echo("<div class='row' style='height:85%'>");
-                    echo("<div class='col-md-9 col-sm-12'>");
+                    echo("<div class='row'>");
+                    echo("<div class='col-md-6 col-sm-12'>");
                     echo("<h4 class='film-info-semi-title-top'>Descrizione <button style='background-color:transparent; border:none; outline:none; color:white' onclick='toggle_info_".$film["id_f"]."();'><i id='desc-icon-".$film["id_f"]."' class='fas fa-angle-up'></i></button></h4>");
                     echo("<script>
                     
                     function toggle_info_".$film["id_f"]."() {
+                        console.log('toggled');
                         var x = document.getElementById('desc-".$film["id_f"]."');
                         if (x.style.display === 'none') {
                         x.style.display = 'block';
@@ -158,27 +165,66 @@
                         x.style.display = 'none';
                         document.getElementById('desc-icon-".$film["id_f"]."').className = 'fas fa-angle-down';
 
-                        }
+                    }
+                    
                     }</script>");
                     echo("<p id='desc-".$film["id_f"]."' class='film-info-desc-p'>".$film["descrizione"]."</p>"); 
-                    echo("<h4 class='film-info-semi-title'>Regista</h4>");
+                    echo("
+                    <script>
+                        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                            console.log('device-detected-toggled');
+                            toggle_info_".$film["id_f"]."();
+                        }
+                    </script>");
+                    echo("<div class='durata-uscita-div'>");
+                    echo("<div class='durata-div'>");
+                    echo("<h4 class='film-info-semi-title'>Durata</h4>");
+                    echo("<p class='film-info-desc-p'>".(int)((int)$film["durata"]/60)." ore e ".((int)$film["durata"]%60)." minuti</p>");
+                    echo("</div>");
+                    echo("<div class='uscita-div'>");
+                    echo("<h4 class='film-info-semi-title'>Data di uscita</h4>");
+                    $data_uscita = strtotime($film["dataUscita"]);
+                    echo("<p class='film-info-desc-p' style='margin-left:5px;'>".date('d', $data_uscita)." ".num_to_month(date('m', $data_uscita))." ".date('Y', $data_uscita)."</p>");
+                    echo("</div>");
+                    echo("</div>");
+                    echo("<div class='all-valutazione-div'>");
+                    echo("<h4 class='film-info-semi-title valutazione-h4'>Valutazione media</h4>");
+                    $rating=round((mysqli_fetch_assoc($conn -> query("SELECT AVG(valutazione) as av FROM feedback WHERE id_f=".$film["id_f"]))["av"]),1);
+                    if($rating==0){
+                        echo("<p class='film-info-desc-p'>Nessuno ha ancora valutato il film, <br> fallo tu per primo!</p>");
+                    }
+                    echo("<div class='valutazione-div'>");
+                    if($rating==0.5){echo("<span class='fas fa-star-half checked'></span><span class='fas fa-star'></span><span class='fas fa-star'></span><span class='fas fa-star'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==1){echo("<span class='fas fa-star checked'></span><span class='fas fa-star'></span><span class='fas fa-star'></span><span class='fas fa-star'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==1.5){echo("<span class='fas fa-star checked'></span><span class='fas fa-star-half checked'></span><span class='fas fa-star'></span><span class='fas fa-star'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==2){echo("<span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star'></span><span class='fas fa-star'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==2.5){echo("<span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star-half checked'></span><span class='fas fa-star'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==3){echo("<span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==3.5){echo("<span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star-half checked'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==4){echo("<span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star'></span>");}
+                    elseif($rating==4.5){echo("<span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star-half checked'></span>");}
+                    elseif($rating==5){echo("<span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span><span class='fas fa-star checked'></span>");}
+                    echo("</div>");
+                    echo("</div>");
+                    echo("</div>");
+                    echo("<div class='col-md-3 col-sm-12'>");
+                    echo("<div class='regista-div'>");
+                    echo("<h4 class='film-info-semi-title regista-title'>Regista</h4>");
                     $registi = $conn -> query("SELECT a.id_ar,a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'regista';");
                     $regista = mysqli_fetch_assoc($registi);
                     while($regista){
-                        echo("<a class='film-info-desc-p' style='margin-top:0;margin-bottom:0;' href='artista.php?id_ar=".$regista["id_ar"]."'>".$regista["nome"]." ".$regista["cognome"]."</a>");
+                        echo("<a class='regista' style='margin-top:0;margin-bottom:0;' href='artista.php?id_ar=".$regista["id_ar"]."'>".$regista["nome"]." ".$regista["cognome"]."</a><br>");
                         $regista = mysqli_fetch_assoc($registi);
                     }
-                    echo("<h4 class='film-info-semi-title'>Attori principali</h4>");
+                    echo("</div><div class='attori-div'>");
+                    echo("<h4 class='film-info-semi-title attori-title'>Attori principali</h4>");
                     $attori = $conn -> query("SELECT a.id_ar,a.nome,a.cognome FROM artista as a, filmartista as fa WHERE a.id_ar=fa.id_ar AND fa.id_f=".$film["id_f"]." AND ruolo LIKE 'attore';");
                     $attore = mysqli_fetch_assoc($attori);
                     while($attore){
-                        echo("<a class='film-info-desc-p' style='margin-top:0;margin-bottom:0;' href='artista.php?id_ar=".$attore["id_ar"]."'>".$attore["nome"]." ".$attore["cognome"]."</a>");
+                        echo("<a class=' attori' style='margin-top:0;margin-bottom:0;' href='artista.php?id_ar=".$attore["id_ar"]."'>".$attore["nome"]." ".$attore["cognome"]."</a><br>");
                         $attore = mysqli_fetch_assoc($attori);
                     }
-                    echo("<h4 class='film-info-semi-title'>Durata</h4>");
-                    echo("<p class='film-info-desc-p'>".(int)((int)$film["durata"]/60)." ore e ".((int)$film["durata"]%60)." minuti</p>");
-                    echo("<a href='video_buffer.php?id_f=".$film["id_f"]."' class='btn' style='margin-right:10px; font-weight: 700; font-size:20px;'>Play</a>");
-                    echo("<button onclick='load_trailer(".$film["id_f"].")' type='button' class='btn' style='margin-right:10px; font-weight: 400; width:80px;' data-toggle='modal' data-target='#modal-".$film["id_f"]."'>Trailer</button>");
+                    echo("</div>");
                     echo("</div>");
                     echo("<div class='col-md-3 hidden-sm'>");
                     echo("<div class='locandina-info-wrapper'>");
@@ -302,6 +348,7 @@
             function load_trailer(id){                
                 sendAjaxTrailer(id,handleTrailerData);
             }
+            
             </script>
             
     </body>
