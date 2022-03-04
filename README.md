@@ -1,7 +1,7 @@
 # FilmAdvisor
 Progetto per l'esame di maturità 2020.
 Interamente realizzato in PHP
-
+     
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/52034469/156814968-b311782b-5461-4e9c-a7ca-52bdffeef645.gif)
 
 **ANALISI**
