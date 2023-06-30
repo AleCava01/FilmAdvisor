@@ -1,6 +1,6 @@
 # FilmAdvisor
 
-<img align="right" src="https://user-images.githubusercontent.com/52034469/156814968-b311782b-5461-4e9c-a7ca-52bdffeef645.gif" width="550">
+<img align="right" src="https://user-images.githubusercontent.com/52034469/156814968-b311782b-5461-4e9c-a7ca-52bdffeef645.gif" width="500">
 
 Progetto per l'esame di maturità 2020.
 Interamente realizzato in PHP
@@ -116,3 +116,13 @@ It's also possible to see the subscription expiration date and renew it.
 
 <img src="https://github.com/AleCava01/FilmAdvisor/assets/52034469/0ddf76a6-ac8f-4e3e-9a44-785c29a0d32c" alt="Pasted image 20230630170130" width="800">
 
+## Deployment
+- [Download XAMPP](https://www.apachefriends.org/download.html) and install in in your computer
+- [Download FilmAdvisor as a zip from GitHub ](https://github.com/AleCava01/FilmAdvisor/archive/refs/heads/master.zip)
+- go to path_to_xampp\htdocs and extract FilmAdvisor-Master folder here. Rename it as FilmAdvisor
+- go to path_to_xampp\htdocs\FilmAdvisor\Database and copy the content of FilmAdvisorDB.sql
+- start XAMPP Apache server and mysql server
+- open phpmyadmin at http://localhost/phpmyadmin/index.php
+- create a new database and name it "filmadvisor"
+- open the database page and go to SQL section, paste here the content from FilmAdvisorDB.sql, run the queries
+- open FilmAdvisor in your browser: http://localhost/FilmAdvisor
