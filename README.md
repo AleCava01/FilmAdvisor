@@ -1,6 +1,6 @@
 # FilmAdvisor
-
 <img align="right" src="https://user-images.githubusercontent.com/52034469/156814968-b311782b-5461-4e9c-a7ca-52bdffeef645.gif" width="500">
+
 
 Progetto per l'esame di maturità 2020.
 Interamente realizzato in PHP
@@ -15,12 +15,26 @@ In order to access the movies, users will need to subscribe to one of the follow
 - Quarterly
 - Annual
   
-
+### Table of Contents
+1. [FilmAdvisor](#filmadvisor)
+2. [Database design](#database-design)
+   - [Constraints](#constraints)
+   - [E-R Diagram](#e-r-diagram)
+   - [Associations](#associations)
+   - [Logical schema](#logical-schema)
+3. [Realization](#realization)
+   - [Registration process](#registration-process)
+   - [Login](#login)
+   - [Homepage](#homepage)
+   - [Review](#review)
+   - [My list](#my-list)
+   - [Settings](#settings)
+4. [Deployment](#deployment)
 
 ## Database design
 
 
-### Contstraints
+### Constraints
 
 - Each movie must belong to at least one genre.
 - Each artist must have participated in the creation of at least one movie.
